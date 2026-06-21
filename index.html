@@ -5,882 +5,850 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="KEEP-BEAT">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0b0b0f">
   <title>KEEP-BEAT</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{background:#0b0b0f;height:100%;overflow-x:hidden;overscroll-behavior:none}
-    button,input,select{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0b0b0f} ::-webkit-scrollbar-thumb{background:#2a2a3a}
+    html,body{background:#0b0b0f;min-height:100%;overscroll-behavior:none}
+    button,input,select{-webkit-tap-highlight-color:transparent;touch-action:manipulation;font-family:inherit}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#0b0b0f}::-webkit-scrollbar-thumb{background:#2a2a3a}
     input,select{outline:none;-webkit-appearance:none;appearance:none}
     input:focus,select:focus{border-color:#f5a623!important}
-    button{transition:opacity .1s,transform .08s;cursor:pointer} button:hover{opacity:.82} button:active{transform:scale(.96)}
+    button{transition:opacity .1s,transform .08s;cursor:pointer}button:hover{opacity:.82}button:active{transform:scale(.96)}
     select option{background:#131318;color:#e0ddd8}
-    .lib-row:hover{background:#1a1a26!important}
+    .librow:hover{background:#1a1a26!important}
     @keyframes pulse{from{opacity:1}to{opacity:.4}}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    #loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0b0b0f;color:#f5a623;font-family:'Courier New',monospace;font-size:14px;letter-spacing:4px}
   </style>
 </head>
 <body>
-<div id="root"></div>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script type="text/babel" data-presets="react">
-const { useState, useEffect, useRef, useCallback } = React;
+<div id="loading">KEEP-BEAT  loading…</div>
+<div id="root" style="display:none"></div>
+
+<!-- Preact + htm: fully inlined, works offline, no internet needed -->
+<script>
+!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n(e.htmPreact={})}(this,function(e){var n,_,t,o,r,u,l,i={},c=[],f=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;function s(e,n){for(var _ in n)e[_]=n[_];return e}function a(e){var n=e.parentNode;n&&n.removeChild(e)}function p(e,_,t){var o,r,u,l={};for(u in _)"key"==u?o=_[u]:"ref"==u?r=_[u]:l[u]=_[u];if(arguments.length>2&&(l.children=arguments.length>3?n.call(arguments,2):t),"function"==typeof e&&null!=e.defaultProps)for(u in e.defaultProps)void 0===l[u]&&(l[u]=e.defaultProps[u]);return h(e,l,o,r,null)}function h(e,n,o,r,u){var l={type:e,props:n,key:o,ref:r,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:null==u?++t:u};return null!=_.vnode&&_.vnode(l),l}function d(e){return e.children}function v(e,n){this.props=e,this.context=n}function y(e,n){if(null==n)return e.__?y(e.__,e.__.__k.indexOf(e)+1):null;for(var _;n<e.__k.length;n++)if(null!=(_=e.__k[n])&&null!=_.__e)return _.__e;return"function"==typeof e.type?y(e):null}function m(e){var n,_;if(null!=(e=e.__)&&null!=e.__c){for(e.__e=e.__c.base=null,n=0;n<e.__k.length;n++)if(null!=(_=e.__k[n])&&null!=_.__e){e.__e=e.__c.base=_.__e;break}return m(e)}}function g(e){(!e.__d&&(e.__d=!0)&&o.push(e)&&!k.__r++||u!==_.debounceRendering)&&((u=_.debounceRendering)||r)(k)}function k(){for(var e;k.__r=o.length;)e=o.sort(function(e,n){return e.__v.__b-n.__v.__b}),o=[],e.some(function(e){var n,_,t,o,r,u;e.__d&&(r=(o=(n=e).__v).__e,(u=n.__P)&&(_=[],(t=s({},o)).__v=o.__v+1,D(u,o,t,n.__n,void 0!==u.ownerSVGElement,null!=o.__h?[r]:null,_,null==r?y(o):r,o.__h),w(_,o),o.__e!=r&&m(o)))})}function b(e,n,_,t,o,r,u,l,f,s){var a,p,v,m,g,k,b,H=t&&t.__k||c,E=H.length;for(_.__k=[],a=0;a<n.length;a++)if(null!=(m=_.__k[a]=null==(m=n[a])||"boolean"==typeof m?null:"string"==typeof m||"number"==typeof m||"bigint"==typeof m?h(null,m,null,null,m):Array.isArray(m)?h(d,{children:m},null,null,null):m.__b>0?h(m.type,m.props,m.key,null,m.__v):m)){if(m.__=_,m.__b=_.__b+1,null===(v=H[a])||v&&m.key==v.key&&m.type===v.type)H[a]=void 0;else for(p=0;p<E;p++){if((v=H[p])&&m.key==v.key&&m.type===v.type){H[p]=void 0;break}v=null}D(e,m,v=v||i,o,r,u,l,f,s),g=m.__e,(p=m.ref)&&v.ref!=p&&(b||(b=[]),v.ref&&b.push(v.ref,null,m),b.push(p,m.__c||g,m)),null!=g?(null==k&&(k=g),"function"==typeof m.type&&null!=m.__k&&m.__k===v.__k?m.__d=f=C(m,f,e):f=x(e,m,v,H,g,f),s||"option"!==_.type?"function"==typeof _.type&&(_.__d=f):e.value=""):f&&v.__e==f&&f.parentNode!=e&&(f=y(v))}for(_.__e=k,a=E;a--;)null!=H[a]&&("function"==typeof _.type&&null!=H[a].__e&&H[a].__e==_.__d&&(_.__d=y(t,a+1)),A(H[a],H[a]));if(b)for(a=0;a<b.length;a++)U(b[a],b[++a],b[++a])}function C(e,n,_){var t,o;for(t=0;t<e.__k.length;t++)(o=e.__k[t])&&(o.__=e,n="function"==typeof o.type?C(o,n,_):x(_,o,o,e.__k,o.__e,n));return n}function x(e,n,_,t,o,r){var u,l,i;if(void 0!==n.__d)u=n.__d,n.__d=void 0;else if(null==_||o!=r||null==o.parentNode)e:if(null==r||r.parentNode!==e)e.appendChild(o),u=null;else{for(l=r,i=0;(l=l.nextSibling)&&i<t.length;i+=2)if(l==o)break e;e.insertBefore(o,r),u=r}return void 0!==u?u:o.nextSibling}function H(e,n,_){"-"===n[0]?e.setProperty(n,_):e[n]=null==_?"":"number"!=typeof _||f.test(n)?_:_+"px"}function E(e,n,_,t,o){var r;e:if("style"===n)if("string"==typeof _)e.style.cssText=_;else{if("string"==typeof t&&(e.style.cssText=t=""),t)for(n in t)_&&n in _||H(e.style,n,"");if(_)for(n in _)t&&_[n]===t[n]||H(e.style,n,_[n])}else if("o"===n[0]&&"n"===n[1])r=n!==(n=n.replace(/Capture$/,"")),n=n.toLowerCase()in e?n.toLowerCase().slice(2):n.slice(2),e.l||(e.l={}),e.l[n+r]=_,_?t||e.addEventListener(n,r?S:P,r):e.removeEventListener(n,r?S:P,r);else if("dangerouslySetInnerHTML"!==n){if(o)n=n.replace(/xlink[H:h]/,"h").replace(/sName$/,"s");else if("href"!==n&&"list"!==n&&"form"!==n&&"tabIndex"!==n&&"download"!==n&&n in e)try{e[n]=null==_?"":_;break e}catch(e){}"function"==typeof _||(null!=_&&(!1!==_||"a"===n[0]&&"r"===n[1])?e.setAttribute(n,_):e.removeAttribute(n))}}function P(e){this.l[e.type+!1](_.event?_.event(e):e)}function S(e){this.l[e.type+!0](_.event?_.event(e):e)}function D(e,n,t,o,r,u,l,i,c){var f,a,p,h,y,m,g,k,C,x,H,E=n.type;if(void 0!==n.constructor)return null;null!=t.__h&&(c=t.__h,i=n.__e=t.__e,n.__h=null,u=[i]),(f=_.__b)&&f(n);try{e:if("function"==typeof E){if(k=n.props,C=(f=E.contextType)&&o[f.__c],x=f?C?C.props.value:f.__:o,t.__c?g=(a=n.__c=t.__c).__=a.__E:("prototype"in E&&E.prototype.render?n.__c=a=new E(k,x):(n.__c=a=new v(k,x),a.constructor=E,a.render=M),C&&C.sub(a),a.props=k,a.state||(a.state={}),a.context=x,a.__n=o,p=a.__d=!0,a.__h=[]),null==a.__s&&(a.__s=a.state),null!=E.getDerivedStateFromProps&&(a.__s==a.state&&(a.__s=s({},a.__s)),s(a.__s,E.getDerivedStateFromProps(k,a.__s))),h=a.props,y=a.state,p)null==E.getDerivedStateFromProps&&null!=a.componentWillMount&&a.componentWillMount(),null!=a.componentDidMount&&a.__h.push(a.componentDidMount);else{if(null==E.getDerivedStateFromProps&&k!==h&&null!=a.componentWillReceiveProps&&a.componentWillReceiveProps(k,x),!a.__e&&null!=a.shouldComponentUpdate&&!1===a.shouldComponentUpdate(k,a.__s,x)||n.__v===t.__v){a.props=k,a.state=a.__s,n.__v!==t.__v&&(a.__d=!1),a.__v=n,n.__e=t.__e,n.__k=t.__k,n.__k.forEach(function(e){e&&(e.__=n)}),a.__h.length&&l.push(a);break e}null!=a.componentWillUpdate&&a.componentWillUpdate(k,a.__s,x),null!=a.componentDidUpdate&&a.__h.push(function(){a.componentDidUpdate(h,y,m)})}a.context=x,a.props=k,a.state=a.__s,(f=_.__r)&&f(n),a.__d=!1,a.__v=n,a.__P=e,f=a.render(a.props,a.state,a.context),a.state=a.__s,null!=a.getChildContext&&(o=s(s({},o),a.getChildContext())),p||null==a.getSnapshotBeforeUpdate||(m=a.getSnapshotBeforeUpdate(h,y)),H=null!=f&&f.type===d&&null==f.key?f.props.children:f,b(e,Array.isArray(H)?H:[H],n,t,o,r,u,l,i,c),a.base=n.__e,n.__h=null,a.__h.length&&l.push(a),g&&(a.__E=a.__=null),a.__e=!1}else null==u&&n.__v===t.__v?(n.__k=t.__k,n.__e=t.__e):n.__e=T(t.__e,n,t,o,r,u,l,c);(f=_.diffed)&&f(n)}catch(e){n.__v=null,(c||null!=u)&&(n.__e=i,n.__h=!!c,u[u.indexOf(i)]=null),_.__e(e,n,t)}}function w(e,n){_.__c&&_.__c(n,e),e.some(function(n){try{e=n.__h,n.__h=[],e.some(function(e){e.call(n)})}catch(e){_.__e(e,n.__v)}})}function T(e,_,t,o,r,u,l,c){var f,s,p,h=t.props,d=_.props,v=_.type,m=0;if("svg"===v&&(r=!0),null!=u)for(;m<u.length;m++)if((f=u[m])&&(f===e||(v?f.localName==v:3==f.nodeType))){e=f,u[m]=null;break}if(null==e){if(null===v)return document.createTextNode(d);e=r?document.createElementNS("http://www.w3.org/2000/svg",v):document.createElement(v,d.is&&d),u=null,c=!1}if(null===v)h===d||c&&e.data===d||(e.data=d);else{if(u=u&&n.call(e.childNodes),s=(h=t.props||i).dangerouslySetInnerHTML,p=d.dangerouslySetInnerHTML,!c){if(null!=u)for(h={},m=0;m<e.attributes.length;m++)h[e.attributes[m].name]=e.attributes[m].value;(p||s)&&(p&&(s&&p.__html==s.__html||p.__html===e.innerHTML)||(e.innerHTML=p&&p.__html||""))}if(function(e,n,_,t,o){var r;for(r in _)"children"===r||"key"===r||r in n||E(e,r,null,_[r],t);for(r in n)o&&"function"!=typeof n[r]||"children"===r||"key"===r||"value"===r||"checked"===r||_[r]===n[r]||E(e,r,n[r],_[r],t)}(e,d,h,r,c),p)_.__k=[];else if(m=_.props.children,b(e,Array.isArray(m)?m:[m],_,t,o,r&&"foreignObject"!==v,u,l,u?u[0]:t.__k&&y(t,0),c),null!=u)for(m=u.length;m--;)null!=u[m]&&a(u[m]);c||("value"in d&&void 0!==(m=d.value)&&(m!==e.value||"progress"===v&&!m)&&E(e,"value",m,h.value,!1),"checked"in d&&void 0!==(m=d.checked)&&m!==e.checked&&E(e,"checked",m,h.checked,!1))}return e}function U(e,n,t){try{"function"==typeof e?e(n):e.current=n}catch(e){_.__e(e,t)}}function A(e,n,t){var o,r;if(_.unmount&&_.unmount(e),(o=e.ref)&&(o.current&&o.current!==e.__e||U(o,null,n)),null!=(o=e.__c)){if(o.componentWillUnmount)try{o.componentWillUnmount()}catch(e){_.__e(e,n)}o.base=o.__P=null}if(o=e.__k)for(r=0;r<o.length;r++)o[r]&&A(o[r],n,"function"!=typeof e.type);t||null==e.__e||a(e.__e),e.__e=e.__d=void 0}function M(e,n,_){return this.constructor(e,_)}n=c.slice,_={__e:function(e,n){for(var _,t,o;n=n.__;)if((_=n.__c)&&!_.__)try{if((t=_.constructor)&&null!=t.getDerivedStateFromError&&(_.setState(t.getDerivedStateFromError(e)),o=_.__d),null!=_.componentDidCatch&&(_.componentDidCatch(e),o=_.__d),o)return _.__E=_}catch(n){e=n}throw e}},t=0,v.prototype.setState=function(e,n){var _;_=null!=this.__s&&this.__s!==this.state?this.__s:this.__s=s({},this.state),"function"==typeof e&&(e=e(s({},_),this.props)),e&&s(_,e),null!=e&&this.__v&&(n&&this.__h.push(n),g(this))},v.prototype.forceUpdate=function(e){this.__v&&(this.__e=!0,e&&this.__h.push(e),g(this))},v.prototype.render=d,o=[],r="function"==typeof Promise?Promise.prototype.then.bind(Promise.resolve()):setTimeout,k.__r=0,l=0;var F,L,N,W=0,R=[],I=_.__b,O=_.__r,V=_.diffed,q=_.__c,B=_.unmount;function $(e,n){_.__h&&_.__h(L,e,W||n),W=0;var t=L.__H||(L.__H={__:[],__h:[]});return e>=t.__.length&&t.__.push({}),t.__[e]}function j(e){return W=1,G(ee,e)}function G(e,n,_){var t=$(F++,2);return t.t=e,t.__c||(t.__=[_?_(n):ee(void 0,n),function(e){var n=t.t(t.__[0],e);t.__[0]!==n&&(t.__=[n,t.__[1]],t.__c.setState({}))}],t.__c=L),t.__}function z(e,n){var t=$(F++,4);!_.__s&&Z(t.__H,n)&&(t.__=e,t.__H=n,L.__h.push(t))}function J(e,n){var _=$(F++,7);return Z(_.__H,n)&&(_.__=e(),_.__H=n,_.__h=e),_.__}function K(){R.forEach(function(e){if(e.__P)try{e.__H.__h.forEach(X),e.__H.__h.forEach(Y),e.__H.__h=[]}catch(n){e.__H.__h=[],_.__e(n,e.__v)}}),R=[]}_.__b=function(e){L=null,I&&I(e)},_.__r=function(e){O&&O(e),F=0;var n=(L=e.__c).__H;n&&(n.__h.forEach(X),n.__h.forEach(Y),n.__h=[])},_.diffed=function(e){V&&V(e);var n=e.__c;n&&n.__H&&n.__H.__h.length&&(1!==R.push(n)&&N===_.requestAnimationFrame||((N=_.requestAnimationFrame)||function(e){var n,_=function(){clearTimeout(t),Q&&cancelAnimationFrame(n),setTimeout(e)},t=setTimeout(_,100);Q&&(n=requestAnimationFrame(_))})(K)),L=void 0},_.__c=function(e,n){n.some(function(e){try{e.__h.forEach(X),e.__h=e.__h.filter(function(e){return!e.__||Y(e)})}catch(t){n.some(function(e){e.__h&&(e.__h=[])}),n=[],_.__e(t,e.__v)}}),q&&q(e,n)},_.unmount=function(e){B&&B(e);var n=e.__c;if(n&&n.__H)try{n.__H.__.forEach(X)}catch(e){_.__e(e,n.__v)}};var Q="function"==typeof requestAnimationFrame;function X(e){var n=L;"function"==typeof e.__c&&e.__c(),L=n}function Y(e){var n=L;e.__c=e.__(),L=n}function Z(e,n){return!e||e.length!==n.length||n.some(function(n,_){return n!==e[_]})}function ee(e,n){return"function"==typeof n?n(e):n}var ne=function(e,n,_,t){var o;n[0]=0;for(var r=1;r<n.length;r++){var u=n[r++],l=n[r]?(n[0]|=u?1:2,_[n[r++]]):n[++r];3===u?t[0]=l:4===u?t[1]=Object.assign(t[1]||{},l):5===u?(t[1]=t[1]||{})[n[++r]]=l:6===u?t[1][n[++r]]+=l+"":u?(o=e.apply(l,ne(e,l,_,["",null])),t.push(o),l[0]?n[0]|=2:(n[r-2]=0,n[r]=o)):t.push(l)}return t},_e=new Map,te=function(e){var n=_e.get(this);return n||(n=new Map,_e.set(this,n)),(n=ne(this,n.get(e)||(n.set(e,n=function(e){for(var n,_,t=1,o="",r="",u=[0],l=function(e){1===t&&(e||(o=o.replace(/^\s*\n\s*|\s*\n\s*$/g,"")))?u.push(0,e,o):3===t&&(e||o)?(u.push(3,e,o),t=2):2===t&&"..."===o&&e?u.push(4,e,0):2===t&&o&&!e?u.push(5,0,!0,o):t>=5&&((o||!e&&5===t)&&(u.push(t,0,o,_),t=6),e&&(u.push(t,e,0,_),t=6)),o=""},i=0;i<e.length;i++){i&&(1===t&&l(),l(i));for(var c=0;c<e[i].length;c++)n=e[i][c],1===t?"<"===n?(l(),u=[u],t=3):o+=n:4===t?"--"===o&&">"===n?(t=1,o=""):o=n+o[0]:r?n===r?r="":o+=n:'"'===n||"'"===n?r=n:">"===n?(l(),t=1):t&&("="===n?(t=5,_=o,o=""):"/"===n&&(t<5||">"===e[i][c+1])?(l(),3===t&&(u=u[0]),t=u,(u=u[0]).push(2,0,t),t=0):" "===n||"\t"===n||"\n"===n||"\r"===n?(l(),t=2):o+=n),3===t&&"!--"===o&&(t=4,u=u[0])}return l(),u}(e)),n),arguments,[])).length>1?n:n[0]}.bind(p);e.h=p,e.html=te,e.render=function(e,t,o){var r,u,l;_.__&&_.__(e,t),u=(r="function"==typeof o)?null:o&&o.__k||t.__k,l=[],D(t,e=(!r&&o||t).__k=p(d,null,[e]),u||i,i,void 0!==t.ownerSVGElement,!r&&o?[o]:u?null:t.firstChild?n.call(t.childNodes):null,l,!r&&o?o:u?u.__e:t.firstChild,r),w(l,e)},e.Component=v,e.createContext=function(e,n){var _={__c:n="__cC"+l++,__:e,Consumer:function(e,n){return e.children(n)},Provider:function(e){var _,t;return this.getChildContext||(_=[],(t={})[n]=this,this.getChildContext=function(){return t},this.shouldComponentUpdate=function(e){this.props.value!==e.value&&_.some(g)},this.sub=function(e){_.push(e);var n=e.componentWillUnmount;e.componentWillUnmount=function(){_.splice(_.indexOf(e),1),n&&n.call(e)}}),e.children}};return _.Provider.__=_.Consumer.contextType=_},e.useState=j,e.useReducer=G,e.useEffect=function(e,n){var t=$(F++,3);!_.__s&&Z(t.__H,n)&&(t.__=e,t.__H=n,L.__H.__h.push(t))},e.useLayoutEffect=z,e.useRef=function(e){return W=5,J(function(){return{current:e}},[])},e.useImperativeHandle=function(e,n,_){W=6,z(function(){"function"==typeof e?e(n()):e&&(e.current=n())},null==_?_:_.concat(e))},e.useMemo=J,e.useCallback=function(e,n){return W=8,J(function(){return e},n)},e.useContext=function(e){var n=L.context[e.__c],_=$(F++,9);return _.c=e,n?(null==_.__&&(_.__=!0,n.sub(L)),n.props.value):e.__},e.useDebugValue=function(e,n){_.useDebugValue&&_.useDebugValue(n?n(e):e)},e.useErrorBoundary=function(e){var n=$(F++,10),_=j();return n.__=e,L.componentDidCatch||(L.componentDidCatch=function(e){n.__&&n.__(e),_[1](e)}),[_[0],function(){_[1](void 0)}]}});
+</script>
+<script>
+'use strict';
+// All hooks + html renderer available via window.htmPreact (inlined, offline-capable)
+const { html, render, useState, useEffect, useRef, useCallback } = window.htmPreact;
 
 // ═══════════════════════════════════════════════════════
-//  AUDIO — CLICK SOUNDS  (level: 2=downbeat 1=accent 0=beat -1=subdivision)
+//  AUDIO HELPERS
 // ═══════════════════════════════════════════════════════
-function makeNoiseBuf(ctx,dur=0.03){const len=Math.floor(ctx.sampleRate*dur),b=ctx.createBuffer(1,len,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;return b;}
-function gainForLevel(l){return l===2?1.0:l===1?.62:l===0?.35:.18;}
-function freqForLevel(base,l){return l===2?base:l===1?base*.72:l===0?base*.55:base*.38;}
+function noiseBuf(ctx, sec) {
+  const n = ctx.sampleRate * sec | 0, b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+  return b;
+}
+function lvGain(l) { return l === 2 ? 1.0 : l === 1 ? 0.62 : l === 0 ? 0.35 : 0.18; }
+function lvFreq(base, l) { return base * (l === 2 ? 1 : l === 1 ? 0.72 : l === 0 ? 0.55 : 0.38); }
 
-function sndWood(ctx,level,time){
-  const f=freqForLevel(1100,level),g=gainForLevel(level);
-  const src=ctx.createBufferSource();src.buffer=makeNoiseBuf(ctx,.022);
-  const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.frequency.value=f*1.7;bp.Q.value=9;
-  const gn=ctx.createGain();gn.gain.setValueAtTime(g*1.3,time);gn.gain.exponentialRampToValueAtTime(.001,time+.02);
-  src.connect(bp);bp.connect(gn);gn.connect(ctx.destination);src.start(time);src.stop(time+.025);
-  const osc=ctx.createOscillator(),ev=ctx.createGain();osc.type="triangle";
-  osc.frequency.setValueAtTime(f,time);osc.frequency.exponentialRampToValueAtTime(f*.45,time+.02);
-  ev.gain.setValueAtTime(g*.9,time);ev.gain.exponentialRampToValueAtTime(.001,time+.02);
-  osc.connect(ev);ev.connect(ctx.destination);osc.start(time);osc.stop(time+.025);
+function sndWood(ctx, l, t, dst) {
+  const f = lvFreq(1100, l), g = lvGain(l);
+  const src = ctx.createBufferSource(); src.buffer = noiseBuf(ctx, .022);
+  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = f * 1.7; bp.Q.value = 9;
+  const gn = ctx.createGain(); gn.gain.setValueAtTime(g * 1.3, t); gn.gain.exponentialRampToValueAtTime(.001, t + .02);
+  src.connect(bp); bp.connect(gn); gn.connect(dst); src.start(t); src.stop(t + .025);
+  const o = ctx.createOscillator(), e = ctx.createGain(); o.type = 'triangle';
+  o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .45, t + .02);
+  e.gain.setValueAtTime(g * .9, t); e.gain.exponentialRampToValueAtTime(.001, t + .02);
+  o.connect(e); e.connect(dst); o.start(t); o.stop(t + .025);
 }
-function sndClick(ctx,level,time){
-  const f=freqForLevel(1400,level),g=gainForLevel(level);
-  const osc=ctx.createOscillator(),ev=ctx.createGain();osc.type="sine";osc.frequency.value=f;
-  ev.gain.setValueAtTime(g,time);ev.gain.exponentialRampToValueAtTime(.001,time+.04);
-  osc.connect(ev);ev.connect(ctx.destination);osc.start(time);osc.stop(time+.05);
+function sndClick(ctx, l, t, dst) {
+  const f = lvFreq(1400, l), g = lvGain(l);
+  const o = ctx.createOscillator(), e = ctx.createGain(); o.type = 'sine'; o.frequency.value = f;
+  e.gain.setValueAtTime(g, t); e.gain.exponentialRampToValueAtTime(.001, t + .045);
+  o.connect(e); e.connect(dst); o.start(t); o.stop(t + .05);
 }
-function sndHihat(ctx,level,time){
-  const g=gainForLevel(level),dur=level===2?.06:level===1?.045:level===0?.03:.018;
-  const src=ctx.createBufferSource();src.buffer=makeNoiseBuf(ctx,dur+.01);
-  const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=level===2?7500:9500;
-  const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.frequency.value=10000;bp.Q.value=.5;
-  const ev=ctx.createGain();ev.gain.setValueAtTime(g,time);ev.gain.exponentialRampToValueAtTime(.001,time+dur);
-  src.connect(hp);hp.connect(bp);bp.connect(ev);ev.connect(ctx.destination);src.start(time);src.stop(time+dur+.01);
+function sndHihat(ctx, l, t, dst) {
+  const g = lvGain(l), d = l === 2 ? .06 : l === 1 ? .045 : l === 0 ? .03 : .018;
+  const src = ctx.createBufferSource(); src.buffer = noiseBuf(ctx, d + .01);
+  const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = l === 2 ? 7500 : 9500;
+  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 10000; bp.Q.value = .5;
+  const e = ctx.createGain(); e.gain.setValueAtTime(g, t); e.gain.exponentialRampToValueAtTime(.001, t + d);
+  src.connect(hp); hp.connect(bp); bp.connect(e); e.connect(dst); src.start(t); src.stop(t + d + .01);
 }
-function sndRim(ctx,level,time){
-  const f=freqForLevel(600,level),g=gainForLevel(level);
-  const src=ctx.createBufferSource();src.buffer=makeNoiseBuf(ctx,.04);
-  const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.frequency.value=2500;bp.Q.value=1.5;
-  const gn=ctx.createGain();gn.gain.setValueAtTime(g*.8,time);gn.gain.exponentialRampToValueAtTime(.001,time+.032);
-  src.connect(bp);bp.connect(gn);gn.connect(ctx.destination);src.start(time);src.stop(time+.04);
-  const osc=ctx.createOscillator(),ev=ctx.createGain();osc.type="square";
-  osc.frequency.setValueAtTime(f,time);osc.frequency.exponentialRampToValueAtTime(f*.4,time+.038);
-  ev.gain.setValueAtTime(g*.7,time);ev.gain.exponentialRampToValueAtTime(.001,time+.038);
-  osc.connect(ev);ev.connect(ctx.destination);osc.start(time);osc.stop(time+.042);
+function sndRim(ctx, l, t, dst) {
+  const f = lvFreq(600, l), g = lvGain(l);
+  const src = ctx.createBufferSource(); src.buffer = noiseBuf(ctx, .04);
+  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2500; bp.Q.value = 1.5;
+  const gn = ctx.createGain(); gn.gain.setValueAtTime(g * .8, t); gn.gain.exponentialRampToValueAtTime(.001, t + .032);
+  src.connect(bp); bp.connect(gn); gn.connect(dst); src.start(t); src.stop(t + .04);
+  const o = ctx.createOscillator(), e = ctx.createGain(); o.type = 'square';
+  o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .4, t + .038);
+  e.gain.setValueAtTime(g * .7, t); e.gain.exponentialRampToValueAtTime(.001, t + .038);
+  o.connect(e); e.connect(dst); o.start(t); o.stop(t + .042);
 }
-function sndBell(ctx,level,time){
-  const f=freqForLevel(2200,level),g=gainForLevel(level),dec=level===2?.35:level===1?.25:level===0?.18:.10;
-  const o1=ctx.createOscillator(),e1=ctx.createGain();o1.type="sine";o1.frequency.value=f;
-  e1.gain.setValueAtTime(g,time);e1.gain.exponentialRampToValueAtTime(.001,time+dec);
-  o1.connect(e1);e1.connect(ctx.destination);o1.start(time);o1.stop(time+dec+.01);
-  const o2=ctx.createOscillator(),e2=ctx.createGain();o2.type="sine";o2.frequency.value=f*2.76;
-  e2.gain.setValueAtTime(g*.4,time);e2.gain.exponentialRampToValueAtTime(.001,time+dec*.6);
-  o2.connect(e2);e2.connect(ctx.destination);o2.start(time);o2.stop(time+dec*.6+.01);
+function sndBell(ctx, l, t, dst) {
+  const f = lvFreq(2200, l), g = lvGain(l), dec = l === 2 ? .35 : l === 1 ? .25 : l === 0 ? .18 : .10;
+  const o1 = ctx.createOscillator(), e1 = ctx.createGain(); o1.type = 'sine'; o1.frequency.value = f;
+  e1.gain.setValueAtTime(g, t); e1.gain.exponentialRampToValueAtTime(.001, t + dec);
+  o1.connect(e1); e1.connect(dst); o1.start(t); o1.stop(t + dec + .01);
+  const o2 = ctx.createOscillator(), e2 = ctx.createGain(); o2.type = 'sine'; o2.frequency.value = f * 2.76;
+  e2.gain.setValueAtTime(g * .4, t); e2.gain.exponentialRampToValueAtTime(.001, t + dec * .6);
+  o2.connect(e2); e2.connect(dst); o2.start(t); o2.stop(t + dec * .6 + .01);
 }
-const SOUNDS={wood:{fn:sndWood,label:"WOOD",desc:"ウッドブロック"},click:{fn:sndClick,label:"CLICK",desc:"デジタルクリック"},hihat:{fn:sndHihat,label:"HI-HAT",desc:"ハイハット"},rim:{fn:sndRim,label:"RIM",desc:"リムショット"},bell:{fn:sndBell,label:"BELL",desc:"ベル"}};
-function playSound(ctx,type,level,time){(SOUNDS[type]?.fn??sndWood)(ctx,level,time);}
-function beatDurSec(d,bpm){return(60/bpm)*(4/d);}
+const SOUNDS = {
+  wood:  { fn: sndWood,  label: 'WOOD',   desc: 'ウッドブロック' },
+  click: { fn: sndClick, label: 'CLICK',  desc: 'デジタルクリック' },
+  hihat: { fn: sndHihat, label: 'HI-HAT', desc: 'ハイハット' },
+  rim:   { fn: sndRim,   label: 'RIM',    desc: 'リムショット' },
+  bell:  { fn: sndBell,  label: 'BELL',   desc: 'ベル' },
+};
+function playClick(ctx, type, level, time, dst) {
+  (SOUNDS[type] || SOUNDS.wood).fn(ctx, level, time, dst);
+}
+function beatSec(d, bpm) { return 60 / bpm * 4 / d; }
 
-// ═══════════════════════════════════════════════════════
-//  TUNER — autocorrelation pitch detection
-// ═══════════════════════════════════════════════════════
-function autoCorrelate(buf,sr){
-  const N=buf.length;let rms=0;
-  for(let i=0;i<N;i++)rms+=buf[i]*buf[i];
-  rms=Math.sqrt(rms/N);if(rms<0.008)return -1;
-  const minOff=Math.floor(sr/3000),maxOff=Math.min(Math.floor(sr/40),Math.floor(N/2));
-  let bestC=0,bestOff=-1;
-  for(let off=minOff;off<=maxOff;off++){
-    let c=0,cnt=N-off;
-    for(let i=0;i<cnt;i++)c+=buf[i]*buf[i+off];
-    c/=cnt;if(c>bestC){bestC=c;bestOff=off;}
+// Master gain + compressor
+function initAudio(ctxRef, mgRef, volRef) {
+  if (!ctxRef.current) ctxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+  const ctx = ctxRef.current;
+  if (ctx.state === 'suspended') ctx.resume();
+  if (!mgRef.current) {
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.setValueAtTime(-3, ctx.currentTime);
+    comp.knee.setValueAtTime(10, ctx.currentTime);
+    comp.ratio.setValueAtTime(10, ctx.currentTime);
+    comp.attack.setValueAtTime(.001, ctx.currentTime);
+    comp.release.setValueAtTime(.15, ctx.currentTime);
+    comp.connect(ctx.destination);
+    const mg = ctx.createGain();
+    mg.gain.value = volRef.current / 100;
+    mg.connect(comp);
+    mgRef.current = mg;
   }
-  if(bestOff<1||bestC<0.005)return -1;
-  // parabolic interpolation
-  const c1=(()=>{let c=0,cnt=N-bestOff+1;for(let i=0;i<cnt;i++)c+=buf[i]*buf[i+bestOff-1];return c/cnt;})();
-  const c3=(()=>{let c=0,cnt=N-bestOff-1;for(let i=0;i<cnt;i++)c+=buf[i]*buf[i+bestOff+1];return c/cnt;})();
-  const a=(c1+c3-2*bestC)/2,b=(c3-c1)/2;
-  const fine=a!==0?bestOff-b/(2*a):bestOff;
-  return sr/fine;
 }
-const NOTE_NAMES=["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
-function freqToNote(freq,a4=442){
-  if(freq<=0)return null;
-  const n=12*Math.log2(freq/a4)+69;
-  const r=Math.round(n),cents=Math.round((n-r)*100);
-  const oct=Math.floor(r/12)-1,name=NOTE_NAMES[((r%12)+12)%12];
-  return{name,oct,cents,freq:freq.toFixed(1)};
+
+// ═══════════════════════════════════════════════════════
+//  TUNER
+// ═══════════════════════════════════════════════════════
+function autoCorrelate(buf, sr) {
+  const N = buf.length; let rms = 0;
+  for (let i = 0; i < N; i++) rms += buf[i] * buf[i];
+  rms = Math.sqrt(rms / N); if (rms < .008) return -1;
+  const lo = Math.floor(sr / 3000), hi = Math.min(Math.floor(sr / 40), N >> 1);
+  let bestC = 0, bestOff = -1;
+  for (let off = lo; off <= hi; off++) {
+    let c = 0, cnt = N - off;
+    for (let i = 0; i < cnt; i++) c += buf[i] * buf[i + off];
+    c /= cnt; if (c > bestC) { bestC = c; bestOff = off; }
+  }
+  if (bestOff < 1 || bestC < .005) return -1;
+  return sr / bestOff;
+}
+const NOTES = ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'];
+function freqToNote(f, a4) {
+  if (f <= 0) return null;
+  const n = 12 * Math.log2(f / a4) + 69, r = Math.round(n);
+  return { name: NOTES[((r % 12) + 12) % 12], oct: (r / 12 | 0) - 1, cents: Math.round((n - r) * 100), hz: f.toFixed(1) };
 }
 
 // ═══════════════════════════════════════════════════════
 //  TEMPO CHANGE
 // ═══════════════════════════════════════════════════════
-const TEMPO_MODES=[
-  {id:"fixed",   label:"─",        sym:"",           desc:"固定テンポ"},
-  {id:"rit",     label:"rit.",      sym:"rit.",        desc:"だんだん遅く"},
-  {id:"rall",    label:"rall.",     sym:"rallentando", desc:"だんだん遅く（広く）"},
-  {id:"allarg",  label:"allarg.",   sym:"allargando",  desc:"広がりながら遅く"},
-  {id:"morendo", label:"mor.",      sym:"morendo",     desc:"消えるように遅く"},
-  {id:"accel",   label:"accel.",    sym:"accel.",      desc:"だんだん速く"},
-  {id:"string",  label:"string.",   sym:"stringendo",  desc:"急き立てて速く"},
-  {id:"poco_rit",label:"p.rit.",    sym:"poco rit.",   desc:"少しだんだん遅く"},
-  {id:"p_accel", label:"p.accel.", sym:"poco accel.", desc:"少しだんだん速く"},
-  {id:"rubato",  label:"rubato",    sym:"rubato",      desc:"自由なテンポ"},
+const TMODES = [
+  { id:'fixed',    label:'─',        sym:'',            desc:'固定テンポ' },
+  { id:'rit',      label:'rit.',      sym:'rit.',        desc:'だんだん遅く' },
+  { id:'rall',     label:'rall.',     sym:'rallentando', desc:'だんだん遅く（広く）' },
+  { id:'allarg',   label:'allarg.',   sym:'allargando',  desc:'広がりながら遅く' },
+  { id:'morendo',  label:'mor.',      sym:'morendo',     desc:'消えるように遅く' },
+  { id:'accel',    label:'accel.',    sym:'accel.',      desc:'だんだん速く' },
+  { id:'string',   label:'string.',   sym:'stringendo',  desc:'急き立てて速く' },
+  { id:'poco_rit', label:'p.rit.',    sym:'poco rit.',   desc:'少しだんだん遅く' },
+  { id:'p_accel',  label:'p.accel.', sym:'poco accel.', desc:'少しだんだん速く' },
+  { id:'rubato',   label:'rubato',    sym:'rubato',      desc:'自由なテンポ' },
 ];
-const TEMPO_DEF_RATIO={rit:.55,rall:.45,allarg:.50,morendo:.22,accel:1.65,string:1.90,poco_rit:.80,p_accel:1.20};
-
-function getTempoBpm(blk,beatInBlock,totalBeats,effBpm){
-  const{tempoMode,bpmEnd,tempoShape}=blk;
-  if(!tempoMode||tempoMode==="fixed")return effBpm;
-  const t=totalBeats>1?beatInBlock/(totalBeats-1):0;
-  const start=effBpm;
-  if(tempoMode==="rubato")return start*(1+(Math.random()*2-1)*0.08);
-  let end;
-  if(bpmEnd&&!isNaN(parseFloat(bpmEnd))&&parseFloat(bpmEnd)>0)end=parseFloat(bpmEnd);
-  else end=start*(TEMPO_DEF_RATIO[tempoMode]??1);
-  if(!tempoShape||tempoShape==="exp"){return start<=0||end<=0?start:start*Math.pow(end/start,t);}
-  return start+(end-start)*t;
+const TRATIO = { rit:.55, rall:.45, allarg:.50, morendo:.22, accel:1.65, string:1.90, poco_rit:.80, p_accel:1.20 };
+function tempoBpm(blk, beatIdx, totalBeats, eff) {
+  const { tempoMode: m, bpmEnd: e, tempoShape: s } = blk;
+  if (!m || m === 'fixed') return eff;
+  if (m === 'rubato') return eff * (1 + (Math.random() * 2 - 1) * .08);
+  const t = totalBeats > 1 ? beatIdx / (totalBeats - 1) : 0;
+  const end = (e && !isNaN(+e) && +e > 0) ? +e : eff * (TRATIO[m] || 1);
+  return s === 'linear' ? eff + (end - eff) * t : eff * Math.pow(end / eff, t);
 }
 
 // ═══════════════════════════════════════════════════════
-//  DATA HELPERS
+//  DATA
 // ═══════════════════════════════════════════════════════
-let _uid=0;const uid=()=>++_uid;
-function mkBlock(n=4,d=4,reps=1,label="",groups="",tempoMode="fixed",bpmEnd="",tempoShape="exp"){
-  return{id:uid(),n,d,reps,label,groups,tempoMode,bpmEnd,tempoShape};
+let _id = 0;
+function uid() { return ++_id; }
+function mkBlk(n=4,d=4,reps=1,label='',groups='',tempoMode='fixed',bpmEnd='',tempoShape='exp') {
+  return { id:uid(), n, d, reps, label, groups, tempoMode, bpmEnd, tempoShape };
 }
-function parseGroups(str,total){
-  if(!str?.trim())return null;
-  const parts=str.split("+").map(s=>parseInt(s.trim())).filter(n=>n>0);
-  if(!parts.length)return null;
-  return parts.reduce((a,b)=>a+b,0)===total?parts:null;
+function parseGroups(str, total) {
+  if (!str || !str.trim()) return null;
+  const p = str.split('+').map(s => +s.trim()).filter(n => n > 0);
+  return p.length && p.reduce((a,b)=>a+b,0) === total ? p : null;
 }
-function getAccentLevels(n,groupsStr){
-  const groups=parseGroups(groupsStr,n);
-  if(!groups)return Array.from({length:n},(_,i)=>i===0?2:1);
-  const acc=new Array(n).fill(0);let p=0;
-  for(const g of groups){acc[p]=p===0?2:1;p+=g;}
-  return acc;
+function accents(n, gs) {
+  const g = parseGroups(gs, n);
+  if (!g) return Array.from({length:n},(_,i)=>i===0?2:1);
+  const a = new Array(n).fill(0); let p = 0;
+  for (const v of g) { a[p] = p===0?2:1; p+=v; }
+  return a;
 }
-function seqToData(seq){return seq.map(({id,...r})=>r);}
-function dataToSeq(data){return data.map(b=>({...b,id:uid()}));}
+function stripId(seq) { return seq.map(({id,...r})=>r); }
+function addIds(data) { return data.map(b=>({...b,id:uid()})); }
 
-const PRESETS=[
-  {label:"2/4",n:2,d:4,g:""},{label:"3/4",n:3,d:4,g:""},{label:"4/4",n:4,d:4,g:""},
-  {label:"5/4",n:5,d:4,g:"2+3"},{label:"6/8",n:6,d:8,g:"3+3"},{label:"7/8",n:7,d:8,g:"2+2+3"},
-  {label:"5/8",n:5,d:8,g:"2+3"},{label:"9/8",n:9,d:8,g:"3+3+3"},{label:"11/8",n:11,d:8,g:"3+3+2+3"},
-  {label:"12/8",n:12,d:8,g:"3+3+3+3"},{label:"13/8",n:13,d:8,g:"3+3+3+4"},{label:"7/4",n:7,d:4,g:"3+4"},
+const PRESETS = [
+  {label:'2/4',n:2,d:4,g:''},{label:'3/4',n:3,d:4,g:''},{label:'4/4',n:4,d:4,g:''},
+  {label:'5/4',n:5,d:4,g:'2+3'},{label:'6/8',n:6,d:8,g:'3+3'},{label:'7/8',n:7,d:8,g:'2+2+3'},
+  {label:'5/8',n:5,d:8,g:'2+3'},{label:'9/8',n:9,d:8,g:'3+3+3'},{label:'11/8',n:11,d:8,g:'3+3+2+3'},
+  {label:'12/8',n:12,d:8,g:'3+3+3+3'},{label:'13/8',n:13,d:8,g:'3+3+3+4'},{label:'7/4',n:7,d:4,g:'3+4'},
 ];
 
 // ═══════════════════════════════════════════════════════
-//  STORAGE
+//  STORAGE (localStorage)
 // ═══════════════════════════════════════════════════════
-const STORAGE_INDEX="kb-index",STORAGE_LAST="kb-last";
-const songKey=name=>`kb-song-${name.replace(/[^a-zA-Z0-9\-_]/g,"_")}`;
-async function stGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch{return null;}}
-async function stSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch{return false;}}
-async function stDel(k){try{localStorage.removeItem(k);return true;}catch{return false;}}
+const IDX = 'kb-idx', LAST = 'kb-last';
+const sk = n => 'kb-s-' + n.replace(/[^\w-]/g,'_');
+async function lsGet(k) { try { const v=localStorage.getItem(k); return v?JSON.parse(v):null; } catch{return null;} }
+async function lsSet(k,v) { try { localStorage.setItem(k,JSON.stringify(v)); return true; } catch{return false;} }
+async function lsDel(k) { try { localStorage.removeItem(k); return true; } catch{return false;} }
 
 // ═══════════════════════════════════════════════════════
 //  STYLES
 // ═══════════════════════════════════════════════════════
-const T={
-  bg:"#0b0b0f",panel:"#131318",panel2:"#1a1a22",border:"#252535",
-  amber:"#f5a623",amberGlow:"#f5a62340",amberDim:"#2e1f08",
-  red:"#e84040",green:"#3dffa0",blue:"#4aade8",cyan:"#30d5c8",purple:"#b06af0",
-  text:"#e0ddd8",muted:"#55556a",
-  font:"'Orbitron',sans-serif",mono:"'Share Tech Mono',monospace",cond:"'Barlow Condensed',sans-serif",
+const C = {
+  bg:'#0b0b0f', pan:'#131318', pan2:'#1a1a22', bdr:'#252535',
+  amb:'#f5a623', ambG:'#f5a62340', ambD:'#2e1f08',
+  red:'#e84040', grn:'#3dffa0', blu:'#4aade8', cyn:'#30d5c8', pur:'#b06af0',
+  txt:'#e0ddd8', mut:'#55556a',
+  fnt:"'Orbitron',sans-serif", mon:"'Share Tech Mono',monospace", cnd:"'Barlow Condensed',sans-serif",
 };
-const S={
-  numInput:{background:"#0a0a0e",border:`1px solid ${T.border}`,color:T.amber,borderRadius:4,padding:"4px",fontFamily:T.font,fontSize:13,textAlign:"center",width:40},
-  seqInput:{background:"#0a0a0e",border:`1px solid ${T.border}`,color:T.text,borderRadius:4,padding:"4px 6px",fontFamily:T.mono,fontSize:12},
-  btnSm:{background:T.panel2,border:`1px solid ${T.border}`,borderRadius:4,color:T.text,padding:"5px 10px",fontFamily:T.mono,fontSize:12,flexShrink:0},
-  btnIcon:{background:"transparent",border:`1px solid ${T.border}`,borderRadius:3,color:T.muted,padding:"2px 6px",fontFamily:"monospace",fontSize:11,flexShrink:0,lineHeight:1.6},
-};
+function p(base,over={}) {
+  return Object.assign({background:C.pan2,border:`1px solid ${C.bdr}`,borderRadius:4,color:C.txt,padding:'5px 10px',fontFamily:C.mon,fontSize:12,flexShrink:0},base,over);
+}
+const BTN = p({});
+const ICO = p({background:'transparent',color:C.mut,padding:'2px 6px',fontSize:11,lineHeight:1.6});
+const NUM = p({color:C.amb,fontFamily:C.fnt,fontSize:13,textAlign:'center',width:40,padding:'4px'});
+const SEQ = p({color:C.txt,fontFamily:C.mon,fontSize:12,padding:'4px 6px'});
 
 // ═══════════════════════════════════════════════════════
-//  MAIN COMPONENT
+//  COMPONENT
 // ═══════════════════════════════════════════════════════
-function KeepBeat(){
-  // Core
-  const [seq,setSeq]           = useState([mkBlock(4,4,4,"","")]);
-  const [bpm,setBpm]           = useState(120);
-  const [pct,setPct]           = useState(100);
-  const [playing,setPlaying]   = useState(false);
-  const [loop,setLoop]         = useState(true);
-  const [soundType,setSoundType] = useState("wood");
-  const [countIn,setCountIn]   = useState(true);
-  const [subdivide,setSubdivide] = useState(0); // 0=off 2 3 4
-  const [tapFlash,setTapFlash] = useState(false);
+function KeepBeat() {
+  const [seq,  setSeq]   = useState([mkBlk(4,4,4)]);
+  const [bpm,  setBpm]   = useState(120);
+  const [pct,  setPct]   = useState(100);
+  const [vol,  setVol]   = useState(100);
+  const [play, setPlay]  = useState(false);
+  const [loop, setLoop]  = useState(true);
+  const [snd,  setSnd]   = useState('wood');
+  const [ci,   setCI]    = useState(true);
+  const [sub,  setSub]   = useState(0);
+  const [tapF, setTapF]  = useState(false);
 
-  // Display
-  const [dBlock,setDBlock]  = useState(0);
-  const [dBeat,setDBeat]    = useState(-1);
-  const [dRep,setDRep]      = useState(0);
-  const [flash,setFlash]    = useState(false);
-  const [isCI,setIsCI]      = useState(false);
-  const [dCIBeat,setDCIBeat]= useState(-1);
-  const [liveBpm,setLiveBpm]= useState(null); // current beat BPM display
+  const [dBlk, setDBlk]  = useState(0);
+  const [dBeat,setDBeat] = useState(-1);
+  const [dRep, setDRep]  = useState(0);
+  const [flash,setFlash] = useState(false);
+  const [inCI, setInCI]  = useState(false);
+  const [ciBt, setCIBt]  = useState(-1);
+  const [lBpm, setLBpm]  = useState(null);
 
-  // Add-form
-  const [addNv,setAddNv]       = useState("4");
-  const [addDv,setAddDv]       = useState("4");
-  const [addRv,setAddRv]       = useState("1");
-  const [addLabel,setAddLabel] = useState("");
-  const [addGroups,setAddGroups] = useState("");
-  const [batchText,setBatchText] = useState("");
+  const [addN, setAddN]  = useState('4');
+  const [addD, setAddD]  = useState('4');
+  const [addR, setAddR]  = useState('1');
+  const [addLb,setAddLb] = useState('');
+  const [addGr,setAddGr] = useState('');
+  const [batch,setBatch] = useState('');
 
-  // Library
-  const [library,setLibrary]       = useState([]);
-  const [showLib,setShowLib]       = useState(false);
-  const [saveName,setSaveName]     = useState("");
-  const [saveMsg,setSaveMsg]       = useState("");
-  const [loadingLib,setLoadingLib] = useState(true);
-  const [currentFile,setCurrentFile] = useState("");
+  const [lib,  setLib]   = useState([]);
+  const [shLib,setShLib] = useState(false);
+  const [svNm, setSvNm]  = useState('');
+  const [svMsg,setSvMsg] = useState('');
+  const [ldLib,setLdLib] = useState(true);
+  const [curF, setCurF]  = useState('');
 
-  // Tuner
-  const [showTuner,setShowTuner] = useState(false);
-  const [tunerOn,setTunerOn]     = useState(false);
-  const [tunerA4,setTunerA4]     = useState(442);
-  const [tunerNote,setTunerNote] = useState(null);
-  const [tunerErr,setTunerErr]   = useState("");
+  const [shTun,setShTun] = useState(false);
+  const [tunOn,setTunOn] = useState(false);
+  const [tunA4,setTunA4] = useState(442);
+  const [tunNt,setTunNt] = useState(null);
+  const [tunEr,setTunEr] = useState('');
 
-  // Refs
-  const ctxRef=useRef(null),timRef=useRef(null),nxtRef=useRef(0),posRef=useRef({bi:0,beat:0,rep:0});
-  const seqRef=useRef(seq),bpmRef=useRef(bpm),pctRef=useRef(pct),loopRef=useRef(loop);
-  const playRef=useRef(false),sndRef=useRef(soundType),tapRef=useRef([]);
-  const inCIRef=useRef(false),ciBeatRef=useRef(0);
-  const subdivideRef=useRef(0),importFileRef=useRef(null);
-  // Tuner refs
-  const tunerStreamRef=useRef(null),tunerAnaRef=useRef(null),tunerAnimRef=useRef(null);
-  const tunerA4Ref=useRef(442),tunerOnRef=useRef(false);
+  const ctxR = useRef(null), mgR = useRef(null), tmR = useRef(null);
+  const nxtR = useRef(0),    posR = useRef({bi:0,beat:0,rep:0});
+  const seqR = useRef(seq),  bpmR = useRef(bpm), pctR = useRef(pct);
+  const volR = useRef(100),  loopR= useRef(true), playR= useRef(false);
+  const sndR = useRef('wood'),subR = useRef(0),   tapR = useRef([]);
+  const inCIR= useRef(false), ciBR = useRef(0),   impR = useRef(null);
+  const tunStR=useRef(null),  tunAR=useRef(null),  tunFR=useRef(null);
+  const tunA4R=useRef(442),   tunOnR=useRef(false);
 
-  useEffect(()=>{seqRef.current=seq;},[seq]);
-  useEffect(()=>{bpmRef.current=bpm;},[bpm]);
-  useEffect(()=>{pctRef.current=pct;},[pct]);
-  useEffect(()=>{loopRef.current=loop;},[loop]);
-  useEffect(()=>{sndRef.current=soundType;},[soundType]);
-  useEffect(()=>{subdivideRef.current=subdivide;},[subdivide]);
-  useEffect(()=>{tunerA4Ref.current=tunerA4;},[tunerA4]);
-
-  const effBpm=Math.round(bpm*pct/100);
-
-  // Auto-save
-  const autoTmr=useRef(null);
+  useEffect(()=>{ seqR.current=seq; },[seq]);
+  useEffect(()=>{ bpmR.current=bpm; },[bpm]);
+  useEffect(()=>{ pctR.current=pct; },[pct]);
+  useEffect(()=>{ loopR.current=loop; },[loop]);
+  useEffect(()=>{ sndR.current=snd; },[snd]);
+  useEffect(()=>{ subR.current=sub; },[sub]);
+  useEffect(()=>{ tunA4R.current=tunA4; },[tunA4]);
   useEffect(()=>{
-    clearTimeout(autoTmr.current);
-    autoTmr.current=setTimeout(()=>stSet(STORAGE_LAST,{seq:seqToData(seq),bpm,pct,loop,soundType,subdivide,tunerA4}),800);
-    return()=>clearTimeout(autoTmr.current);
-  },[seq,bpm,pct,loop,soundType,subdivide,tunerA4]);
+    volR.current=vol;
+    if (mgR.current) {
+      mgR.current.gain.cancelScheduledValues(mgR.current.context.currentTime);
+      mgR.current.gain.linearRampToValueAtTime(vol/100, mgR.current.context.currentTime+.02);
+    }
+  },[vol]);
 
-  // Load on mount
+  const effBpm = Math.round(bpm*pct/100);
+
+  // auto-save
+  const autoT = useRef(null);
+  useEffect(()=>{
+    clearTimeout(autoT.current);
+    autoT.current = setTimeout(()=>lsSet(LAST,{seq:stripId(seq),bpm,pct,vol,loop,snd,sub,tunA4}),800);
+    return ()=>clearTimeout(autoT.current);
+  },[seq,bpm,pct,vol,loop,snd,sub,tunA4]);
+
   useEffect(()=>{
     (async()=>{
-      setLoadingLib(true);
-      const last=await stGet(STORAGE_LAST);
-      if(last?.seq?.length){
-        setSeq(dataToSeq(last.seq));
-        if(last.bpm)setBpm(last.bpm);
-        if(last.pct)setPct(last.pct);
-        if(last.loop!==undefined)setLoop(last.loop);
-        if(last.soundType)setSoundType(last.soundType);
-        if(last.subdivide!==undefined)setSubdivide(last.subdivide);
-        if(last.tunerA4)setTunerA4(last.tunerA4);
+      setLdLib(true);
+      const last = await lsGet(LAST);
+      if (last && last.seq && last.seq.length) {
+        setSeq(addIds(last.seq));
+        if (last.bpm) setBpm(last.bpm);
+        if (last.pct) setPct(last.pct);
+        if (last.vol != null) setVol(last.vol);
+        if (last.loop != null) setLoop(last.loop);
+        if (last.snd) setSnd(last.snd);
+        if (last.sub != null) setSub(last.sub);
+        if (last.tunA4) setTunA4(last.tunA4);
       }
-      const idx=await stGet(STORAGE_INDEX);
-      if(Array.isArray(idx))setLibrary(idx);
-      setLoadingLib(false);
+      const idx = await lsGet(IDX);
+      if (Array.isArray(idx)) setLib(idx);
+      setLdLib(false);
     })();
-    return()=>{stopTuner();};
+    return ()=>{ stopTun(); };
   },[]);
 
-  // ── SCHEDULER ──────────────────────────────────────
-  const sched=useCallback(()=>{
-    if(!playRef.current)return;
-    const ctx=ctxRef.current,s=seqRef.current;
-    if(!s.length){clearTimeout(timRef.current);return;}
-    while(nxtRef.current<ctx.currentTime+0.12){
-      const effBpmNow=bpmRef.current*pctRef.current/100;
-      if(inCIRef.current){
-        const blk=s[0],beat=ciBeatRef.current;
-        const dur=beatDurSec(blk.d,effBpmNow);
-        const accents=getAccentLevels(blk.n,blk.groups),level=accents[beat]??1;
-        playSound(ctx,sndRef.current,level,nxtRef.current);
-        const t=nxtRef.current,cb=beat;
-        setTimeout(()=>{if(playRef.current){setIsCI(true);setDCIBeat(cb);}},Math.max(0,(t-ctx.currentTime)*1000-15));
-        nxtRef.current+=dur;ciBeatRef.current++;
-        if(ciBeatRef.current>=blk.n){inCIRef.current=false;const ts=nxtRef.current;setTimeout(()=>{if(playRef.current)setIsCI(false);},Math.max(0,(ts-ctx.currentTime)*1000-20));}
+  // ── scheduler ──────────────────────────────────────
+  const sched = useCallback(()=>{
+    if (!playR.current) return;
+    const ctx = ctxR.current, s = seqR.current;
+    if (!s.length) { clearTimeout(tmR.current); return; }
+    const dst = mgR.current || ctx.destination;
+    while (nxtR.current < ctx.currentTime + .12) {
+      const eff = bpmR.current * pctR.current / 100;
+      if (inCIR.current) {
+        const blk = s[0], beat = ciBR.current;
+        const dur = beatSec(blk.d, eff);
+        const acc = accents(blk.n, blk.groups), lv = acc[beat] || 1;
+        playClick(ctx, sndR.current, lv, nxtR.current, dst);
+        const t=nxtR.current, cb=beat;
+        setTimeout(()=>{ if(playR.current){setInCI(true);setCIBt(cb);} }, Math.max(0,(t-ctx.currentTime)*1000-15));
+        nxtR.current += dur; ciBR.current++;
+        if (ciBR.current >= blk.n) {
+          inCIR.current = false;
+          const ts = nxtR.current;
+          setTimeout(()=>{ if(playR.current) setInCI(false); }, Math.max(0,(ts-ctx.currentTime)*1000-20));
+        }
         continue;
       }
-      const{bi,beat,rep}=posRef.current,blk=s[bi];
-      const beatInBlock=rep*blk.n+beat,totalBeats=blk.n*blk.reps;
-      const beatBpm=getTempoBpm(blk,beatInBlock,totalBeats,effBpmNow);
-      const dur=beatDurSec(blk.d,beatBpm);
-      const accents=getAccentLevels(blk.n,blk.groups),level=accents[beat]??1;
-      playSound(ctx,sndRef.current,level,nxtRef.current);
-      // Subdivision
-      const sub=subdivideRef.current;
-      if(sub>1){const sd=dur/sub;for(let sv=1;sv<sub;sv++)playSound(ctx,sndRef.current,-1,nxtRef.current+sv*sd);}
-      const t=nxtRef.current,cbi=bi,cb=beat,cr=rep,lv=level,bb=Math.round(beatBpm);
+      const {bi,beat,rep} = posR.current, blk = s[bi];
+      const bib = rep*blk.n+beat, tot = blk.n*blk.reps;
+      const bBpm = tempoBpm(blk, bib, tot, eff);
+      const dur = beatSec(blk.d, bBpm);
+      const acc = accents(blk.n, blk.groups), lv = acc[beat] || 1;
+      playClick(ctx, sndR.current, lv, nxtR.current, dst);
+      const sv = subR.current;
+      if (sv > 1) { const sd=dur/sv; for(let k=1;k<sv;k++) playClick(ctx,sndR.current,-1,nxtR.current+k*sd,dst); }
+      const t=nxtR.current, cbi=bi, cb=beat, cr=rep, clv=lv, cb2=Math.round(bBpm);
       setTimeout(()=>{
-        if(!playRef.current)return;
-        setDBlock(cbi);setDBeat(cb);setDRep(cr);setLiveBpm(bb);
-        if(lv===2){setFlash(true);setTimeout(()=>setFlash(false),80);}
-      },Math.max(0,(t-ctx.currentTime)*1000-15));
-      nxtRef.current+=dur;
-      let nb=beat+1,nr=rep,nbi=bi;
-      if(nb>=blk.n){nb=0;nr++;if(nr>=blk.reps){nr=0;nbi++;if(nbi>=s.length){if(loopRef.current)nbi=0;else{playRef.current=false;setPlaying(false);setLiveBpm(null);break;}}}}
-      posRef.current={bi:nbi,beat:nb,rep:nr};
+        if (!playR.current) return;
+        setDBlk(cbi); setDBeat(cb); setDRep(cr); setLBpm(cb2);
+        if (clv===2){setFlash(true);setTimeout(()=>setFlash(false),80);}
+      }, Math.max(0,(t-ctx.currentTime)*1000-15));
+      nxtR.current += dur;
+      let nb=beat+1, nr=rep, nbi=bi;
+      if (nb>=blk.n) { nb=0; nr++; if(nr>=blk.reps){nr=0;nbi++;if(nbi>=s.length){if(loopR.current)nbi=0;else{playR.current=false;setPlay(false);setLBpm(null);break;}}}}
+      posR.current = {bi:nbi,beat:nb,rep:nr};
     }
-    timRef.current=setTimeout(sched,25);
+    tmR.current = setTimeout(sched,25);
   },[]);
 
-  function startPlay(){
-    if(!ctxRef.current)ctxRef.current=new(window.AudioContext||window.webkitAudioContext)();
-    if(ctxRef.current.state==="suspended")ctxRef.current.resume();
-    posRef.current={bi:0,beat:0,rep:0};nxtRef.current=ctxRef.current.currentTime+0.05;
-    if(countIn&&seqRef.current.length>0){inCIRef.current=true;ciBeatRef.current=0;setIsCI(true);setDCIBeat(-1);}
-    else inCIRef.current=false;
-    playRef.current=true;setPlaying(true);setDBlock(0);setDBeat(-1);setDRep(0);setLiveBpm(null);
+  function startPlay() {
+    initAudio(ctxR, mgR, volR);
+    posR.current = {bi:0,beat:0,rep:0};
+    nxtR.current = ctxR.current.currentTime + .05;
+    if (ci && seqR.current.length) { inCIR.current=true; ciBR.current=0; setInCI(true); setCIBt(-1); }
+    else inCIR.current = false;
+    playR.current=true; setPlay(true); setDBlk(0); setDBeat(-1); setDRep(0); setLBpm(null);
     sched();
   }
-  function stopPlay(){
-    playRef.current=false;setPlaying(false);clearTimeout(timRef.current);
-    setDBeat(-1);setFlash(false);setIsCI(false);inCIRef.current=false;ciBeatRef.current=0;setLiveBpm(null);
+  function stopPlay() {
+    playR.current=false; setPlay(false); clearTimeout(tmR.current);
+    setDBeat(-1); setFlash(false); setInCI(false); inCIR.current=false; ciBR.current=0; setLBpm(null);
   }
-  function tapTempo(){
-    const now=Date.now(),taps=tapRef.current.filter(t=>now-t<3000);
-    taps.push(now);tapRef.current=taps.slice(-8);
-    if(taps.length>=2){const diffs=taps.slice(1).map((t,i)=>t-taps[i]);const avg=diffs.reduce((a,b)=>a+b)/diffs.length;setBpm(Math.min(300,Math.max(20,Math.round(60000/avg))));}
-    setTapFlash(true);setTimeout(()=>setTapFlash(false),120);
+  function tapTempo() {
+    const now=Date.now(), taps=tapR.current.filter(t=>now-t<3000);
+    taps.push(now); tapR.current=taps.slice(-8);
+    if (taps.length>=2){const diffs=taps.slice(1).map((t,i)=>t-taps[i]);const avg=diffs.reduce((a,b)=>a+b)/diffs.length;setBpm(Math.min(300,Math.max(20,Math.round(60000/avg))));}
+    setTapF(true); setTimeout(()=>setTapF(false),120);
   }
 
-  // ── TUNER ──────────────────────────────────────────
-  function startTuner(){
-    if(!navigator.mediaDevices?.getUserMedia){setTunerErr("マイクAPIが使用できません（HTTPSが必要な場合があります）");return;}
-    setTunerErr("");
+  // tuner
+  function startTun() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { setTunEr('マイクAPIが使えません（HTTPS必要）'); return; }
+    setTunEr('');
     navigator.mediaDevices.getUserMedia({audio:true,video:false}).then(stream=>{
-      tunerStreamRef.current=stream;
-      if(!ctxRef.current)ctxRef.current=new(window.AudioContext||window.webkitAudioContext)();
-      const ctx=ctxRef.current;
-      if(ctx.state==="suspended")ctx.resume();
-      const src=ctx.createMediaStreamSource(stream);
-      const ana=ctx.createAnalyser();
-      ana.fftSize=2048;ana.smoothingTimeConstant=0;
-      src.connect(ana);tunerAnaRef.current=ana;
-      tunerOnRef.current=true;setTunerOn(true);
-      let frameN=0;
-      const buf=new Float32Array(ana.fftSize);
+      tunStR.current = stream;
+      initAudio(ctxR, mgR, volR);
+      const ctx = ctxR.current;
+      const src = ctx.createMediaStreamSource(stream);
+      const ana = ctx.createAnalyser(); ana.fftSize=2048; ana.smoothingTimeConstant=0;
+      src.connect(ana); tunAR.current=ana;
+      tunOnR.current=true; setTunOn(true);
+      const buf = new Float32Array(2048); let fr=0;
       function loop(){
-        if(!tunerOnRef.current)return;
-        tunerAnimRef.current=requestAnimationFrame(loop);
-        if(++frameN%4!==0)return; // ~15fps analysis
+        if(!tunOnR.current) return;
+        tunFR.current=requestAnimationFrame(loop);
+        if(++fr%4!==0) return;
         ana.getFloatTimeDomainData(buf);
-        const freq=autoCorrelate(buf,ctx.sampleRate);
-        setTunerNote(freq>0?freqToNote(freq,tunerA4Ref.current):null);
+        const f=autoCorrelate(buf,ctx.sampleRate);
+        setTunNt(f>0?freqToNote(f,tunA4R.current):null);
       }
       loop();
-    }).catch(err=>{
-      setTunerErr(err.name==="NotAllowedError"?"マイクへのアクセスが拒否されました":"マイクにアクセスできませんでした");
-    });
+    }).catch(e=>setTunEr(e.name==='NotAllowedError'?'マイクアクセスが拒否されました':'マイクにアクセスできませんでした'));
   }
-  function stopTuner(){
-    tunerOnRef.current=false;setTunerOn(false);
-    cancelAnimationFrame(tunerAnimRef.current);
-    tunerStreamRef.current?.getTracks().forEach(t=>t.stop());
-    tunerStreamRef.current=null;tunerAnaRef.current=null;
-    setTunerNote(null);
+  function stopTun() {
+    tunOnR.current=false; setTunOn(false);
+    cancelAnimationFrame(tunFR.current);
+    if(tunStR.current) tunStR.current.getTracks().forEach(t=>t.stop());
+    tunStR.current=null; tunAR.current=null; setTunNt(null);
   }
-  function toggleTuner(){tunerOn?stopTuner():startTuner();}
 
-  // ── SEQUENCE OPS ───────────────────────────────────
-  function addBlock(){
-    const n=Math.max(1,parseInt(addNv)||4),d=parseInt(addDv)||4,r=Math.max(1,parseInt(addRv)||1);
-    setSeq(s=>[...s,mkBlock(n,d,r,addLabel,addGroups)]);setAddLabel("");setAddGroups("");
+  // seq ops
+  function addBlk() {
+    const n=Math.max(1,+addN||4),d=+addD||4,r=Math.max(1,+addR||1);
+    setSeq(s=>[...s,mkBlk(n,d,r,addLb,addGr)]); setAddLb(''); setAddGr('');
   }
-  function removeBlock(id){setSeq(s=>s.filter(b=>b.id!==id));}
-  function updateBlock(id,field,value){setSeq(s=>s.map(b=>b.id===id?{...b,[field]:value}:b));}
-  function moveBlock(id,dir){setSeq(s=>{const idx=s.findIndex(b=>b.id===id),ni=idx+dir;if(ni<0||ni>=s.length)return s;const ns=[...s];[ns[idx],ns[ni]]=[ns[ni],ns[idx]];return ns;});}
-  function duplicateBlock(id){setSeq(s=>{const idx=s.findIndex(b=>b.id===id);if(idx<0)return s;const b=s[idx];const cp=mkBlock(b.n,b.d,b.reps,b.label,b.groups,b.tempoMode,b.bpmEnd,b.tempoShape);const ns=[...s];ns.splice(idx+1,0,cp);return ns;});}
-  function parseBatch(){
-    const parts=batchText.split(/[,;]+/).map(s=>s.trim()).filter(Boolean),blocks=[];
-    for(const part of parts){const m=part.match(/^(\d+)\/(\d+)(?:[×x*](\d+))?\s*(.*)$/i);if(m){const n=parseInt(m[1]),d=parseInt(m[2]),r=parseInt(m[3])||1,label=(m[4]||"").trim();if(n>0&&[2,4,8,16,32].includes(d))blocks.push(mkBlock(n,d,r,label,""));}}
-    if(blocks.length){setSeq(blocks);setBatchText("");}
+  function rmBlk(id)    { setSeq(s=>s.filter(b=>b.id!==id)); }
+  function upBlk(id,f,v){ setSeq(s=>s.map(b=>b.id===id?{...b,[f]:v}:b)); }
+  function mvBlk(id,dir){ setSeq(s=>{const i=s.findIndex(b=>b.id===id),j=i+dir;if(j<0||j>=s.length)return s;const a=[...s];[a[i],a[j]]=[a[j],a[i]];return a;}); }
+  function dupBlk(id)   { setSeq(s=>{const i=s.findIndex(b=>b.id===id);if(i<0)return s;const b=s[i],c=mkBlk(b.n,b.d,b.reps,b.label,b.groups,b.tempoMode,b.bpmEnd,b.tempoShape);const a=[...s];a.splice(i+1,0,c);return a;}); }
+  function parseBatch() {
+    const blks=[];
+    for(const p of batch.split(/[,;]+/).map(s=>s.trim()).filter(Boolean)){
+      const m=p.match(/^(\d+)\/(\d+)(?:[×x*](\d+))?\s*(.*)$/i);
+      if(m){const n=+m[1],d=+m[2],r=+m[3]||1,lb=(m[4]||'').trim();if(n>0&&[2,4,8,16,32].includes(d))blks.push(mkBlk(n,d,r,lb,''));}
+    }
+    if(blks.length){setSeq(blks);setBatch('');}
   }
-  function clearAll(){stopPlay();setSeq([mkBlock(4,4,4,"","")]);setCurrentFile("");}
+  function clearAll(){ stopPlay(); setSeq([mkBlk(4,4,4)]); setCurF(''); }
 
-  // ── LIBRARY OPS ────────────────────────────────────
-  async function saveSong(){
-    const name=saveName.trim();if(!name){flashMsg("⚠ 名前を入力");return;}
-    const totalM=seq.reduce((a,b)=>a+b.reps,0);
-    const entry={name,bpm,pct,loop,soundType,subdivide,tunerA4,seq:seqToData(seq),savedAt:new Date().toISOString(),totalMeasures:totalM};
-    if(!await stSet(songKey(name),entry)){flashMsg("❌ 保存失敗");return;}
-    const newLib=library.filter(e=>e.name!==name).concat({name,bpm,savedAt:entry.savedAt,totalMeasures:totalM}).sort((a,b)=>a.name.localeCompare(b.name));
-    await stSet(STORAGE_INDEX,newLib);setLibrary(newLib);setCurrentFile(name);flashMsg(`✓ "${name}" 保存完了`);
+  // library
+  async function saveS(){
+    const name=svNm.trim(); if(!name){fm('⚠ 名前を入力');return;}
+    const tot=seq.reduce((a,b)=>a+b.reps,0);
+    const e={name,bpm,pct,vol,loop,snd,sub,tunA4,seq:stripId(seq),savedAt:new Date().toISOString(),totalMeasures:tot};
+    if(!await lsSet(sk(name),e)){fm('❌ 保存失敗');return;}
+    const nl=lib.filter(x=>x.name!==name).concat({name,bpm,savedAt:e.savedAt,totalMeasures:tot}).sort((a,b)=>a.name.localeCompare(b.name));
+    await lsSet(IDX,nl); setLib(nl); setCurF(name); fm(`✓ "${name}" 保存完了`);
   }
-  async function loadSong(name){
-    const data=await stGet(songKey(name));if(!data){flashMsg("❌ 読み込み失敗");return;}
-    stopPlay();setSeq(dataToSeq(data.seq));
-    if(data.bpm)setBpm(data.bpm);if(data.pct)setPct(data.pct);
-    if(data.loop!==undefined)setLoop(data.loop);if(data.soundType)setSoundType(data.soundType);
-    if(data.subdivide!==undefined)setSubdivide(data.subdivide);
-    setCurrentFile(name);setSaveName(name);setShowLib(false);flashMsg(`✓ "${name}" 読み込み完了`);
+  async function loadS(name){
+    const d=await lsGet(sk(name)); if(!d){fm('❌ 読み込み失敗');return;}
+    stopPlay(); setSeq(addIds(d.seq));
+    if(d.bpm)setBpm(d.bpm); if(d.pct)setPct(d.pct); if(d.vol!=null)setVol(d.vol);
+    if(d.loop!=null)setLoop(d.loop); if(d.snd)setSnd(d.snd); if(d.sub!=null)setSub(d.sub);
+    setCurF(name); setSvNm(name); setShLib(false); fm(`✓ "${name}" 読み込み完了`);
   }
-  async function deleteSong(name){
-    if(!window.confirm(`"${name}" を削除しますか？`))return;
-    await stDel(songKey(name));
-    const newLib=library.filter(e=>e.name!==name);
-    await stSet(STORAGE_INDEX,newLib);setLibrary(newLib);
-    if(currentFile===name)setCurrentFile("");flashMsg(`🗑 "${name}" 削除`);
+  async function delS(name){
+    if(!confirm(`"${name}" を削除しますか？`))return;
+    await lsDel(sk(name));
+    const nl=lib.filter(x=>x.name!==name); await lsSet(IDX,nl); setLib(nl);
+    if(curF===name) setCurF(''); fm(`🗑 "${name}" 削除`);
   }
-  function flashMsg(msg){setSaveMsg(msg);setTimeout(()=>setSaveMsg(""),3000);}
-  function fmtDate(iso){try{return new Date(iso).toLocaleString("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"});}catch{return iso;}}
+  function fm(msg){setSvMsg(msg);setTimeout(()=>setSvMsg(''),3000);}
+  function fmtDt(iso){try{return new Date(iso).toLocaleString('ja-JP',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});}catch{return iso;}}
 
-  // ── EXPORT/IMPORT ───────────────────────────────────
-  function dlJson(data,filename){
-    const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
-    const url=URL.createObjectURL(blob),a=document.createElement("a");
-    a.href=url;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  // export/import
+  function dl(data,name){
+    const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(u),1000);
   }
-  function exportCurrent(){
-    const data={type:"keepbeat-sequence",version:"1.3",name:currentFile||"KEEP-BEAT sequence",bpm,pct,loop,soundType,subdivide,seq:seqToData(seq),exportedAt:new Date().toISOString(),totalMeasures:seq.reduce((a,b)=>a+b.reps,0)};
-    dlJson(data,`KEEPBEAT_${(currentFile||"sequence").replace(/[\s\/\\:*?"<>|]/g,"-")}.json`);
-    flashMsg("📤 書き出し完了");
+  function expCur(){dl({type:'keepbeat-seq',ver:'2',name:curF||'sequence',bpm,pct,vol,loop,snd,sub,seq:stripId(seq),savedAt:new Date().toISOString(),totalMeasures:seq.reduce((a,b)=>a+b.reps,0)},`KEEPBEAT_${(curF||'sequence').replace(/[\s\/\\:*?"<>|]/g,'-')}.json`);fm('📤 書き出し完了');}
+  async function expLib(){
+    if(!lib.length){fm('⚠ ライブラリが空');return;}
+    const songs=[];for(const e of lib){const d=await lsGet(sk(e.name));if(d)songs.push(d);}
+    dl({type:'keepbeat-lib',ver:'2',songs,savedAt:new Date().toISOString()},`KEEPBEAT_library.json`);fm(`📚 ${songs.length}曲 書き出し完了`);
   }
-  async function exportLibrary(){
-    if(!library.length){flashMsg("⚠ ライブラリが空");return;}
-    const songs=[];
-    for(const e of library){const d=await stGet(songKey(e.name));if(d)songs.push(d);}
-    dlJson({type:"keepbeat-library",version:"1.3",songs,exportedAt:new Date().toISOString(),songCount:songs.length},`KEEPBEAT_library_${new Date().toLocaleDateString("ja-JP").replace(/\//g,"-")}.json`);
-    flashMsg(`📚 ${songs.length}曲 書き出し完了`);
-  }
-  function handleImportFile(e){
+  function impFile(e){
     const file=e.target.files[0];if(!file)return;
-    const reader=new FileReader();
-    reader.onload=async(ev)=>{
+    const r=new FileReader();
+    r.onload=async ev=>{
       try{
-        const data=JSON.parse(ev.target.result);
-        if(data.type==="keepbeat-sequence"){
-          stopPlay();setSeq(dataToSeq(data.seq));
-          if(data.bpm)setBpm(data.bpm);if(data.pct)setPct(data.pct);
-          if(data.loop!==undefined)setLoop(data.loop);if(data.soundType)setSoundType(data.soundType);
-          if(data.subdivide!==undefined)setSubdivide(data.subdivide);
-          const name=data.name||file.name.replace(/\.json$/i,"");
-          setCurrentFile(name);setSaveName(name);setShowLib(false);flashMsg(`✓ "${name}" インポート完了`);
-        }else if(data.type==="keepbeat-library"){
-          if(!data.songs?.length){flashMsg("⚠ 曲が見つかりません");return;}
-          let count=0;const newEntries=[];
-          for(const song of data.songs){
-            if(!song?.seq||!song?.name)continue;
-            await stSet(songKey(song.name),song);
-            const totalM=song.totalMeasures||song.seq.reduce((a,b)=>a+(b.reps||1),0);
-            newEntries.push({name:song.name,bpm:song.bpm,savedAt:song.savedAt||new Date().toISOString(),totalMeasures:totalM});
-            count++;
-          }
-          const merged=[...library.filter(e=>!newEntries.find(n=>n.name===e.name)),...newEntries].sort((a,b)=>a.name.localeCompare(b.name));
-          await stSet(STORAGE_INDEX,merged);setLibrary(merged);flashMsg(`✓ ${count}曲 インポート完了`);
-        }else{flashMsg("❌ 対応していないファイル形式");}
-      }catch{flashMsg("❌ ファイル読み込み失敗");}
+        const d=JSON.parse(ev.target.result);
+        if(d.type==='keepbeat-seq'||d.type==='keepbeat-sequence'){
+          stopPlay();setSeq(addIds(d.seq));
+          if(d.bpm)setBpm(d.bpm);if(d.pct)setPct(d.pct);if(d.vol!=null)setVol(d.vol);
+          if(d.loop!=null)setLoop(d.loop);if(d.snd)setSnd(d.snd);if(d.sub!=null)setSub(d.sub);
+          const nm=d.name||file.name.replace(/\.json$/i,'');setCurF(nm);setSvNm(nm);setShLib(false);fm(`✓ "${nm}" インポート完了`);
+        }else if(d.type==='keepbeat-lib'||d.type==='keepbeat-library'){
+          if(!d.songs||!d.songs.length){fm('⚠ 曲が見つかりません');return;}
+          let cnt=0;const ne=[];
+          for(const s of d.songs){if(!s||!s.seq||!s.name)continue;await lsSet(sk(s.name),s);ne.push({name:s.name,bpm:s.bpm,savedAt:s.savedAt||new Date().toISOString(),totalMeasures:s.totalMeasures||s.seq.reduce((a,b)=>a+(b.reps||1),0)});cnt++;}
+          const ml=[...lib.filter(x=>!ne.find(y=>y.name===x.name)),...ne].sort((a,b)=>a.name.localeCompare(b.name));
+          await lsSet(IDX,ml);setLib(ml);fm(`✓ ${cnt}曲 インポート完了`);
+        }else fm('❌ 対応していないファイル形式');
+      }catch(err){fm('❌ ファイル読み込み失敗');}
     };
-    reader.readAsText(file);e.target.value="";
+    r.readAsText(file);e.target.value='';
   }
 
-  // ── DERIVED ────────────────────────────────────────
-  const curBlk=isCI?(seq[0]||mkBlock()):(seq[Math.min(dBlock,seq.length-1)]||seq[0]||mkBlock());
-  const accents=getAccentLevels(curBlk.n,curBlk.groups);
-  const activeBeat=isCI?dCIBeat:dBeat;
-  let globalMeasure=1;
-  for(let i=0;i<Math.min(dBlock,seq.length);i++)globalMeasure+=seq[i]?.reps||0;
-  globalMeasure+=dRep;
-  const totalMeasures=seq.reduce((a,b)=>a+b.reps,0);
-  const dotColor=isCI?T.cyan:T.amber;
-  const sigColor=isCI?T.cyan:(playing?T.amber:T.muted);
-  const curTempoMode=TEMPO_MODES.find(m=>m.id===curBlk.tempoMode)||TEMPO_MODES[0];
+  // derived
+  const cBlk = inCI?(seq[0]||mkBlk()):(seq[Math.min(dBlk,seq.length-1)]||seq[0]||mkBlk());
+  const acc = accents(cBlk.n, cBlk.groups);
+  const aBeat = inCI ? ciBt : dBeat;
+  let gMeas=1; for(let i=0;i<Math.min(dBlk,seq.length);i++) gMeas+=seq[i]?.reps||0; gMeas+=dRep;
+  const totM = seq.reduce((a,b)=>a+b.reps,0);
+  const dCol = inCI?C.cyn:C.amb;
+  const sCol = inCI?C.cyn:(play?C.amb:C.mut);
+  const cTM = TMODES.find(m=>m.id===cBlk.tempoMode)||TMODES[0];
+  const tC = tunNt?.cents||0;
+  const mW=280, mH=44;
+  const tx=c=>(c+50)/100*mW;
+  const nX=tx(tC);
+  const nCol=Math.abs(tC)<10?C.grn:Math.abs(tC)<25?C.amb:C.red;
 
-  // Tuner meter
-  const tunerCents=tunerNote?.cents??0;
-  const mW=280,mH=46;
-  const toX=c=>(c+50)/100*mW;
-  const needleX=toX(tunerCents);
-  const needleColor=Math.abs(tunerCents)<10?T.green:Math.abs(tunerCents)<25?T.amber:T.red;
-  const subLabels={0:"OFF",2:"♪÷2 8分",3:"♪÷3 3連",4:"♪÷4 16分"};
+  // ─── RENDER ──────────────────────────────────────────
+  return html`<div style=${{fontFamily:C.mon,background:C.bg,color:C.txt,minHeight:'100vh',padding:'12px 14px',WebkitFontSmoothing:'antialiased'}}>
 
-  // ══════════════════════════════════════════════════════
-  return (
-    <div style={{fontFamily:T.mono,background:T.bg,color:T.text,minHeight:"100vh",padding:"12px 14px",WebkitFontSmoothing:"antialiased"}}>
-
-      {/* ── HEADER ── */}
-      <div style={{display:"flex",alignItems:"flex-end",justifyContent:"space-between",marginBottom:10,flexWrap:"wrap",gap:6}}>
-        <div>
-          <div style={{fontFamily:T.font,fontSize:22,fontWeight:900,color:T.amber,letterSpacing:4,textShadow:`0 0 24px ${T.amberGlow}`}}>KEEP-BEAT</div>
-          <div style={{fontFamily:T.cond,fontSize:10,color:T.muted,letterSpacing:2,marginTop:1}}>
-            BRASS BAND VARIABLE METER METRONOME
-            {currentFile&&<span style={{color:T.blue,marginLeft:8}}>▶ {currentFile}</span>}
-          </div>
-        </div>
-        <div style={{display:"flex",gap:5,flexWrap:"wrap",alignItems:"center"}}>
-          {saveMsg&&<span style={{fontFamily:T.cond,fontSize:11,color:T.green}}>{saveMsg}</span>}
-          <button onClick={()=>setShowTuner(v=>!v)} style={{...S.btnSm,background:showTuner?"#1a1a2e":T.panel2,color:T.purple,border:`1px solid ${showTuner?T.purple:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:2}}>
-            🎵 TUNER{tunerOn&&<span style={{color:T.green,animation:"blink 1s infinite"}}> ●</span>}
-          </button>
-          <button onClick={()=>setShowLib(l=>!l)} style={{...S.btnSm,background:showLib?"#1a2a35":T.panel2,color:T.blue,border:`1px solid ${showLib?T.blue:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:2}}>
-            ☰ LIBRARY{library.length>0&&` (${library.length})`}
-          </button>
-          <button onClick={()=>setLoop(l=>!l)} style={{...S.btnSm,background:loop?T.amber:"transparent",color:loop?"#000":T.muted,border:`1px solid ${loop?T.amber:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:2}}>
-            ⟳ {loop?"LOOP ON":"LOOP OFF"}
-          </button>
+    <!-- HEADER -->
+    <div style=${{display:'flex',alignItems:'flex-end',justifyContent:'space-between',marginBottom:10,flexWrap:'wrap',gap:6}}>
+      <div>
+        <div style=${{fontFamily:C.fnt,fontSize:22,fontWeight:900,color:C.amb,letterSpacing:4,textShadow:`0 0 24px ${C.ambG}`}}>KEEP-BEAT</div>
+        <div style=${{fontFamily:C.cnd,fontSize:10,color:C.mut,letterSpacing:2,marginTop:1}}>
+          BRASS BAND VARIABLE METER METRONOME
+          ${curF?html`<span style=${{color:C.blu,marginLeft:8}}>▶ ${curF}</span>`:''}
         </div>
       </div>
-
-      {/* ── TUNER PANEL ── */}
-      {showTuner&&(
-        <div style={{background:T.panel,border:`1px solid ${T.purple}50`,borderRadius:8,padding:14,marginBottom:10}}>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10,flexWrap:"wrap",gap:8}}>
-            <div style={{fontFamily:T.cond,fontSize:11,color:T.purple,letterSpacing:3,fontWeight:700}}>🎵 CHROMATIC TUNER</div>
-            <div style={{display:"flex",gap:5,alignItems:"center",flexWrap:"wrap"}}>
-              <span style={{fontFamily:T.cond,fontSize:10,color:T.muted}}>A4 基準音:</span>
-              {[440,441,442,443,444].map(v=>(
-                <button key={v} onClick={()=>setTunerA4(v)} style={{...S.btnSm,background:tunerA4===v?T.purple:T.panel2,color:tunerA4===v?"#fff":T.muted,border:`1px solid ${tunerA4===v?T.purple:T.border}`,fontSize:11,padding:"4px 8px",fontFamily:T.font}}>
-                  {v}
-                </button>
-              ))}
-              <button onClick={toggleTuner} style={{...S.btnSm,background:tunerOn?"#2a1a2e":T.panel2,color:tunerOn?T.green:T.muted,border:`1px solid ${tunerOn?T.green:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:1,padding:"5px 12px"}}>
-                {tunerOn?"● MIC ON":"○ MIC OFF"}
-              </button>
-            </div>
-          </div>
-
-          {tunerErr&&<div style={{fontFamily:T.cond,fontSize:11,color:T.red,marginBottom:8}}>{tunerErr}</div>}
-
-          <div style={{display:"flex",gap:14,alignItems:"center",flexWrap:"wrap"}}>
-            {/* Note display */}
-            <div style={{minWidth:80,textAlign:"center"}}>
-              <div style={{fontFamily:T.font,fontSize:52,fontWeight:900,color:tunerNote?T.purple:T.muted,lineHeight:1,textShadow:tunerNote?`0 0 20px ${T.purple}50`:"none",transition:"color .1s"}}>
-                {tunerNote?tunerNote.name:"—"}
-              </div>
-              <div style={{fontFamily:T.font,fontSize:18,color:tunerNote?T.muted:"#333",marginTop:-4}}>
-                {tunerNote?tunerNote.oct:""}
-              </div>
-            </div>
-
-            {/* Meter + data */}
-            <div style={{flex:1,minWidth:180}}>
-              {/* SVG meter */}
-              <svg viewBox={`0 0 ${mW} ${mH}`} style={{width:"100%",borderRadius:4,overflow:"visible",display:"block",marginBottom:6}}>
-                <defs>
-                  <linearGradient id="mgrad" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#4a1010"/>
-                    <stop offset="20%" stopColor="#4a3510"/>
-                    <stop offset="38%" stopColor="#153520"/>
-                    <stop offset="50%" stopColor="#0d4a28"/>
-                    <stop offset="62%" stopColor="#153520"/>
-                    <stop offset="80%" stopColor="#4a3510"/>
-                    <stop offset="100%" stopColor="#4a1010"/>
-                  </linearGradient>
-                </defs>
-                <rect width={mW} height={mH-8} fill="url(#mgrad)" rx="3"/>
-                {[-50,-25,-10,0,10,25,50].map(c=>(
-                  <g key={c}>
-                    <line x1={toX(c)} y1={mH-14} x2={toX(c)} y2={mH-8} stroke="#666" strokeWidth={c===0?2:1}/>
-                    <text x={toX(c)} y={mH-2} fill="#555" fontSize="7.5" textAnchor="middle" fontFamily="monospace">{c>0?`+${c}`:c}</text>
-                  </g>
-                ))}
-                {tunerNote&&(
-                  <>
-                    <line x1={needleX} y1={2} x2={needleX} y2={mH-9} stroke={needleColor} strokeWidth={2.5} strokeLinecap="round"/>
-                    <circle cx={needleX} cy={mH-7} r={4.5} fill={needleColor} style={{filter:`drop-shadow(0 0 4px ${needleColor})`}}/>
-                  </>
-                )}
-              </svg>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <div style={{fontFamily:T.font,fontSize:16,color:tunerNote?needleColor:T.muted,fontWeight:700}}>
-                  {tunerNote?(tunerCents>0?`+${tunerCents}`:tunerCents)+" ¢":"─ ¢"}
-                </div>
-                <div style={{fontFamily:T.mono,fontSize:11,color:T.muted}}>
-                  {tunerNote?`${tunerNote.freq} Hz`:"─"}
-                </div>
-                <div style={{fontFamily:T.cond,fontSize:10,color:tunerOn?T.green:T.muted}}>
-                  {tunerOn?"● LIVE":"○ MUTED"}
-                </div>
-              </div>
-            </div>
-          </div>
-          {!tunerOn&&<div style={{fontFamily:T.cond,fontSize:10,color:"#333",marginTop:8}}>※ HTTPS環境またはローカル接続でのみマイクアクセスが可能です</div>}
-        </div>
-      )}
-
-      {/* ── LIBRARY ── */}
-      {showLib&&(
-        <div style={{background:T.panel,border:`1px solid ${T.blue}40`,borderRadius:8,padding:14,marginBottom:10}}>
-          <div style={{fontFamily:T.cond,fontSize:11,color:T.blue,letterSpacing:3,fontWeight:700,marginBottom:10}}>☰ LIBRARY</div>
-          <div style={{display:"flex",gap:6,alignItems:"center",marginBottom:10,flexWrap:"wrap"}}>
-            <input value={saveName} onChange={e=>setSaveName(e.target.value)} onKeyDown={e=>e.key==="Enter"&&saveSong()}
-              placeholder="曲名 / セクション名" style={{...S.seqInput,flex:1,minWidth:140,padding:"7px 10px",fontSize:13,border:`1px solid ${T.blue}40`}}/>
-            <button onClick={saveSong} style={{background:T.blue,color:"#000",border:"none",borderRadius:4,padding:"7px 16px",fontFamily:T.cond,fontWeight:700,fontSize:13,letterSpacing:1}}>💾 SAVE</button>
-          </div>
-          {loadingLib?(
-            <div style={{color:T.muted,fontFamily:T.cond,fontSize:12,textAlign:"center",padding:12}}>読み込み中…</div>
-          ):library.length===0?(
-            <div style={{color:T.muted,fontFamily:T.cond,fontSize:12,textAlign:"center",padding:12,border:`1px dashed ${T.border}`,borderRadius:6}}>保存データなし</div>
-          ):(
-            <div style={{maxHeight:200,overflowY:"auto",marginBottom:10}}>
-              {library.map(entry=>(
-                <div key={entry.name} className="lib-row" style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",marginBottom:3,background:currentFile===entry.name?"#162030":"#0f0f16",border:`1px solid ${currentFile===entry.name?T.blue+"60":T.border}`,borderRadius:5}}>
-                  <div style={{width:5,height:5,borderRadius:"50%",flexShrink:0,background:currentFile===entry.name?T.blue:"#222"}}/>
-                  <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontFamily:T.font,fontSize:11,color:currentFile===entry.name?T.blue:T.text,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{entry.name}</div>
-                    <div style={{fontFamily:T.cond,fontSize:10,color:T.muted,marginTop:1}}>♩={entry.bpm} · {entry.totalMeasures}小節 · {fmtDate(entry.savedAt)}</div>
-                  </div>
-                  <button onClick={()=>loadSong(entry.name)} style={{...S.btnSm,color:T.blue,border:`1px solid ${T.blue}40`,fontFamily:T.cond,fontWeight:700,fontSize:11,padding:"4px 10px"}}>LOAD</button>
-                  <button onClick={()=>deleteSong(entry.name)} style={{...S.btnIcon,color:T.red,border:`1px solid #3a1a1a`,padding:"3px 8px",fontSize:13}}>🗑</button>
-                </div>
-              ))}
-            </div>
-          )}
-          <div style={{borderTop:`1px solid ${T.border}`,paddingTop:10}}>
-            <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:7}}>EXPORT / IMPORT</div>
-            <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
-              <button onClick={exportCurrent} style={{...S.btnSm,color:T.cyan,border:`1px solid ${T.cyan}40`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:1,padding:"6px 10px"}}>📤 現在のシーケンス書き出し</button>
-              <button onClick={exportLibrary} style={{...S.btnSm,color:T.cyan,border:`1px solid ${T.cyan}40`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:1,padding:"6px 10px"}}>📚 ライブラリ全体を書き出し</button>
-              <button onClick={()=>importFileRef.current&&importFileRef.current.click()} style={{...S.btnSm,color:T.amber,border:`1px solid ${T.amber}40`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:1,padding:"6px 10px"}}>📂 JSONを読み込む</button>
-              <input ref={importFileRef} type="file" accept=".json,application/json" onChange={handleImportFile} style={{display:"none"}}/>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── MAIN ROW: Display + Transport ── */}
-      <div style={{display:"flex",gap:10,marginBottom:10,flexWrap:"wrap"}}>
-
-        {/* BEAT DISPLAY */}
-        <div style={{flex:"1 1 250px",minWidth:240,background:T.panel,border:`1px solid ${isCI?T.cyan:(flash?T.amber:T.border)}`,borderRadius:8,padding:14,boxShadow:isCI?`0 0 20px ${T.cyan}25`:(flash?`0 0 20px ${T.amberGlow}`:"none"),transition:"border-color .06s,box-shadow .06s"}}>
-          {isCI&&<div style={{fontFamily:T.font,fontSize:9,color:T.cyan,letterSpacing:4,marginBottom:5,animation:"pulse .5s ease-in-out infinite alternate"}}>◆ PRE-COUNT</div>}
-          <div style={{fontFamily:T.font,fontWeight:900,lineHeight:1,marginBottom:8,display:"flex",alignItems:"baseline",gap:4}}>
-            <span style={{fontSize:56,color:sigColor,textShadow:playing?`0 0 20px ${sigColor}40`:"none",transition:"color .15s"}}>{curBlk.n}</span>
-            <span style={{fontSize:24,color:T.muted,paddingBottom:3}}>/</span>
-            <span style={{fontSize:36,color:sigColor,opacity:.9}}>{curBlk.d}</span>
-            {curBlk.tempoMode!=="fixed"&&<span style={{fontSize:12,color:T.purple,marginLeft:4,fontFamily:T.cond,fontStyle:"italic"}}>{curTempoMode.sym||curTempoMode.label}</span>}
-          </div>
-          {(curBlk.label||curBlk.groups)&&<div style={{display:"flex",gap:8,marginBottom:8,alignItems:"center",flexWrap:"wrap"}}>
-            {curBlk.label&&<span style={{fontFamily:T.cond,fontSize:11,color:T.amber,letterSpacing:2}}>{curBlk.label.toUpperCase()}</span>}
-            {curBlk.groups&&<span style={{fontFamily:T.mono,fontSize:10,color:T.muted}}>[{curBlk.groups}]</span>}
-          </div>}
-          <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:12}}>
-            {Array.from({length:curBlk.n},(_,i)=>{
-              const level=accents[i],isActive=activeBeat===i&&playing;
-              const sz=level===2?26:level===1?20:16;
-              return <div key={i} style={{width:sz,height:sz,borderRadius:"50%",flexShrink:0,background:isActive?(level===2?dotColor:level===1?dotColor+"cc":"#aaaacc"):(level===2?T.amberDim:"#191923"),border:`1.5px solid ${isActive?dotColor:(level===2?"#3a2610":"#202030")}`,boxShadow:isActive&&level===2?`0 0 10px ${dotColor},0 0 20px ${dotColor}40`:"none",transition:"background .04s,box-shadow .04s"}}/>;
-            })}
-          </div>
-          <div style={{display:"flex",alignItems:"baseline",gap:6,marginBottom:4}}>
-            <span style={{fontFamily:T.font,fontSize:20,color:isCI?T.cyan:(playing?T.amber:T.muted),fontWeight:700}}>
-              {isCI?"——":(playing?String(globalMeasure).padStart(2,"0"):"——")}
-            </span>
-            <span style={{fontFamily:T.cond,fontSize:11,color:T.muted}}>/ {totalMeasures} MEASURES</span>
-          </div>
-          {playing&&!isCI&&(
-            <div style={{fontFamily:T.cond,fontSize:10,color:T.muted}}>
-              BEAT {dBeat+1}/{curBlk.n} &nbsp; REP {dRep+1}/{curBlk.reps}
-              {liveBpm&&liveBpm!==effBpm&&<span style={{marginLeft:8,color:T.purple}}>♩={liveBpm}</span>}
-            </div>
-          )}
-          {isCI&&<div style={{fontFamily:T.cond,fontSize:10,color:T.cyan}}>BEAT {dCIBeat+1}/{curBlk.n}</div>}
-        </div>
-
-        {/* TRANSPORT */}
-        <div style={{flex:"1 1 230px",minWidth:210,background:T.panel,border:`1px solid ${T.border}`,borderRadius:8,padding:14,display:"flex",flexDirection:"column",gap:10}}>
-
-          {/* SOUND TYPE */}
-          <div>
-            <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>SOUND TYPE</div>
-            <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-              {Object.entries(SOUNDS).map(([id,s])=>(
-                <button key={id} onClick={()=>setSoundType(id)} style={{...S.btnSm,background:soundType===id?T.amber:T.panel2,color:soundType===id?"#000":T.muted,border:`1px solid ${soundType===id?T.amber:T.border}`,fontFamily:T.font,fontSize:9,letterSpacing:1,padding:"5px 7px"}}>
-                  {s.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* SUBDIVISION */}
-          <div>
-            <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>SUBDIVISION（細分化）</div>
-            <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-              {[0,2,3,4].map(v=>(
-                <button key={v} onClick={()=>setSubdivide(v)} style={{...S.btnSm,background:subdivide===v?T.green:T.panel2,color:subdivide===v?"#000":T.muted,border:`1px solid ${subdivide===v?T.green:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:10,padding:"5px 8px",letterSpacing:1}}>
-                  {subLabels[v]}
-                </button>
-              ))}
-            </div>
-            {subdivide>0&&<div style={{fontFamily:T.cond,fontSize:10,color:T.green,marginTop:3}}>拍の間に{subdivide-1}つの細分音を追加</div>}
-          </div>
-
-          {/* COUNT-IN */}
-          <button onClick={()=>setCountIn(c=>!c)} style={{...S.btnSm,background:countIn?T.cyan+"22":"transparent",color:countIn?T.cyan:T.muted,border:`1px solid ${countIn?T.cyan:T.border}`,fontFamily:T.cond,fontWeight:700,fontSize:11,letterSpacing:2,padding:"7px",width:"100%"}}>
-            {countIn?"◆ 予備拍 ON (1小節)":"◇ 予備拍 OFF"}
-          </button>
-
-          {/* BPM */}
-          <div>
-            <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:4}}>BPM (♩ 基準)</div>
-            <div style={{display:"flex",alignItems:"center",gap:5}}>
-              <button onClick={()=>setBpm(b=>Math.max(20,b-1))} style={{...S.btnSm,minWidth:36,fontSize:16,padding:"4px"}}>−</button>
-              <input type="number" value={bpm} min={20} max={300} onChange={e=>setBpm(Math.min(300,Math.max(20,parseInt(e.target.value)||60)))}
-                style={{flex:1,background:"#0a0a0e",border:`1px solid ${T.border}`,color:T.amber,borderRadius:4,padding:"5px 0",fontFamily:T.font,fontSize:20,fontWeight:700,textAlign:"center"}}/>
-              <button onClick={()=>setBpm(b=>Math.min(300,b+1))} style={{...S.btnSm,minWidth:36,fontSize:16,padding:"4px"}}>+</button>
-            </div>
-            <input type="range" min={20} max={300} value={bpm} onChange={e=>setBpm(parseInt(e.target.value))} style={{width:"100%",marginTop:5,accentColor:T.amber,height:20}}/>
-          </div>
-
-          <button onClick={tapTempo} style={{...S.btnSm,background:tapFlash?T.amber:T.panel2,color:tapFlash?"#000":T.text,fontFamily:T.cond,fontWeight:700,fontSize:13,letterSpacing:3,padding:10,borderRadius:5,border:`1px solid ${tapFlash?T.amber:T.border}`}}>TAP TEMPO</button>
-
-          {/* TEMPO % */}
-          <div>
-            <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
-              <span style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3}}>TEMPO %</span>
-              <span style={{fontFamily:T.font,fontSize:11,color:T.amber}}>={effBpm} ♩/min</span>
-            </div>
-            <div style={{display:"flex",gap:3,flexWrap:"wrap",marginBottom:4}}>
-              {[50,60,70,75,80,90,100].map(p=>(
-                <button key={p} onClick={()=>setPct(p)} style={{...S.btnSm,background:pct===p?T.amber:T.panel2,color:pct===p?"#000":T.muted,padding:"3px 5px",fontSize:10,border:`1px solid ${pct===p?T.amber:T.border}`,minHeight:28}}>{p}%</button>
-              ))}
-            </div>
-            <div style={{display:"flex",gap:5,alignItems:"center"}}>
-              <input type="range" min={25} max={200} value={pct} onChange={e=>setPct(parseInt(e.target.value))} style={{flex:1,accentColor:T.amber,height:18}}/>
-              <input type="number" value={pct} min={25} max={200} onChange={e=>setPct(Math.min(200,Math.max(25,parseInt(e.target.value)||100)))}
-                style={{...S.numInput,width:46,fontSize:12}}/>
-              <span style={{fontFamily:T.cond,fontSize:10,color:T.muted}}>%</span>
-            </div>
-          </div>
-
-          <button onClick={playing?stopPlay:startPlay} style={{background:playing?T.red:T.amber,color:"#000",border:"none",borderRadius:6,padding:"14px 0",fontFamily:T.font,fontWeight:900,fontSize:14,letterSpacing:4,boxShadow:playing?`0 0 20px #e8404060`:`0 0 16px ${T.amberGlow}`,minHeight:50}}>
-            {playing?"■ STOP":"▶ PLAY"}
-          </button>
-        </div>
-      </div>
-
-      {/* ── SEQUENCE EDITOR ── */}
-      <div style={{background:T.panel,border:`1px solid ${T.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontFamily:T.cond,fontSize:10,color:T.muted,letterSpacing:3,fontWeight:600,marginBottom:8}}>
-          SEQUENCE <span style={{color:"#333"}}>({seq.length} BLOCKS · {totalMeasures} MEASURES)</span>
-        </div>
-        <div style={{maxHeight:280,overflowY:"auto",marginBottom:10}}>
-          {seq.map((blk,i)=>{
-            const isActive=playing&&!isCI&&dBlock===i;
-            const tm=TEMPO_MODES.find(m=>m.id===blk.tempoMode)||TEMPO_MODES[0];
-            return (
-              <div key={blk.id} style={{display:"flex",alignItems:"center",gap:4,padding:"5px 7px",marginBottom:4,background:isActive?"#151f12":"#0f0f14",border:`1px solid ${isActive?T.green:T.border}`,borderRadius:5,overflowX:"auto",flexWrap:"nowrap"}}>
-                <div style={{width:5,height:5,borderRadius:"50%",flexShrink:0,background:isActive?T.green:"#1e1e28"}}/>
-                <span style={{fontFamily:T.font,fontSize:9,color:"#333",width:12,textAlign:"center",flexShrink:0}}>{i+1}</span>
-                {/* N/D */}
-                <input type="number" value={blk.n} min={1} max={32} onChange={e=>updateBlock(blk.id,"n",Math.max(1,parseInt(e.target.value)||4))} style={{...S.numInput,width:34}}/>
-                <span style={{color:T.muted,fontSize:13,flexShrink:0}}>/</span>
-                <select value={blk.d} onChange={e=>updateBlock(blk.id,"d",parseInt(e.target.value))} style={{...S.numInput,width:36,cursor:"pointer",paddingLeft:3,flexShrink:0}}>
-                  {[2,4,8,16,32].map(v=><option key={v} value={v}>{v}</option>)}
-                </select>
-                <span style={{color:T.muted,fontSize:12,flexShrink:0}}>×</span>
-                <input type="number" value={blk.reps} min={1} max={999} onChange={e=>updateBlock(blk.id,"reps",Math.max(1,parseInt(e.target.value)||1))} style={{...S.numInput,width:42}}/>
-                {/* Groups */}
-                <input value={blk.groups} onChange={e=>updateBlock(blk.id,"groups",e.target.value)} placeholder="groups" style={{...S.seqInput,width:76,color:T.muted,fontSize:11,flexShrink:0}}/>
-                {/* Label */}
-                <input value={blk.label} onChange={e=>updateBlock(blk.id,"label",e.target.value)} placeholder="label" style={{...S.seqInput,width:70,flexShrink:0}}/>
-                {/* Tempo mode */}
-                <select value={blk.tempoMode||"fixed"} onChange={e=>updateBlock(blk.id,"tempoMode",e.target.value)}
-                  style={{...S.seqInput,width:72,color:blk.tempoMode&&blk.tempoMode!=="fixed"?T.purple:T.muted,fontSize:11,cursor:"pointer",flexShrink:0}}>
-                  {TEMPO_MODES.map(m=><option key={m.id} value={m.id}>{m.label}</option>)}
-                </select>
-                {/* Target BPM (show when not fixed/rubato) */}
-                {blk.tempoMode&&blk.tempoMode!=="fixed"&&blk.tempoMode!=="rubato"&&(
-                  <>
-                    <span style={{color:T.purple,fontSize:11,flexShrink:0}}>→</span>
-                    <input value={blk.bpmEnd} onChange={e=>updateBlock(blk.id,"bpmEnd",e.target.value)}
-                      placeholder="BPM" style={{...S.seqInput,width:46,color:T.purple,fontSize:11,flexShrink:0}}/>
-                    <select value={blk.tempoShape||"exp"} onChange={e=>updateBlock(blk.id,"tempoShape",e.target.value)}
-                      style={{...S.seqInput,width:42,color:"#888",fontSize:10,cursor:"pointer",flexShrink:0}}>
-                      <option value="exp">exp</option>
-                      <option value="linear">lin</option>
-                    </select>
-                  </>
-                )}
-                <button onClick={()=>moveBlock(blk.id,-1)} disabled={i===0} style={{...S.btnIcon,opacity:i===0?.2:1,padding:"3px 5px",minWidth:22}}>▲</button>
-                <button onClick={()=>moveBlock(blk.id,1)} disabled={i===seq.length-1} style={{...S.btnIcon,opacity:i===seq.length-1?.2:1,padding:"3px 5px",minWidth:22}}>▼</button>
-                <button onClick={()=>duplicateBlock(blk.id)} style={{...S.btnIcon,padding:"3px 5px",minWidth:22}}>⧉</button>
-                <button onClick={()=>removeBlock(blk.id)} style={{...S.btnIcon,color:T.red,padding:"3px 5px",minWidth:22}}>✕</button>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Tempo mode legend */}
-        <div style={{marginBottom:10,padding:"6px 10px",background:"#0d0d12",borderRadius:5,border:`1px solid ${T.border}`}}>
-          <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>TEMPO CHANGE SYMBOLS</div>
-          <div style={{display:"flex",flexWrap:"wrap",gap:"2px 10px"}}>
-            {TEMPO_MODES.filter(m=>m.id!=="fixed").map(m=>(
-              <span key={m.id} style={{fontFamily:T.cond,fontSize:10,color:T.muted}}>
-                <span style={{color:T.purple,fontStyle:"italic"}}>{m.label}</span> {m.desc}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Quick presets */}
-        <div style={{marginBottom:10}}>
-          <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>QUICK ADD</div>
-          <div style={{display:"flex",flexWrap:"wrap",gap:4}}>
-            {PRESETS.map(p=>(
-              <button key={p.label} onClick={()=>setSeq(s=>[...s,mkBlock(p.n,p.d,1,"",p.g)])} style={{background:T.panel2,border:`1px solid ${T.border}`,color:T.amber,borderRadius:4,padding:"5px 9px",fontFamily:T.font,fontSize:11,letterSpacing:1,minHeight:30}}>{p.label}</button>
-            ))}
-          </div>
-        </div>
-
-        {/* Custom add */}
-        <div style={{marginBottom:10}}>
-          <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>CUSTOM ADD</div>
-          <div style={{display:"flex",alignItems:"center",gap:4,flexWrap:"wrap"}}>
-            <input value={addNv} onChange={e=>setAddNv(e.target.value)} placeholder="N" style={{...S.numInput,width:36}}/>
-            <span style={{color:T.muted}}>/</span>
-            <select value={addDv} onChange={e=>setAddDv(e.target.value)} style={{...S.numInput,width:38,cursor:"pointer"}}>
-              {[2,4,8,16,32].map(v=><option key={v} value={v}>{v}</option>)}
-            </select>
-            <span style={{color:T.muted}}>×</span>
-            <input value={addRv} onChange={e=>setAddRv(e.target.value)} placeholder="回" style={{...S.numInput,width:42}}/>
-            <input value={addGroups} onChange={e=>setAddGroups(e.target.value)} placeholder="groups" style={{...S.seqInput,width:100,color:T.muted,fontSize:11}}/>
-            <input value={addLabel} onChange={e=>setAddLabel(e.target.value)} placeholder="ラベル" style={{...S.seqInput,flex:1,minWidth:70}}/>
-            <button onClick={addBlock} style={{background:T.amber,color:"#000",border:"none",borderRadius:4,padding:"6px 14px",fontFamily:T.cond,fontWeight:700,fontSize:13,letterSpacing:1,minHeight:32}}>+ ADD</button>
-          </div>
-        </div>
-
-        {/* Batch */}
-        <div>
-          <div style={{fontFamily:T.cond,fontSize:9,color:T.muted,letterSpacing:3,marginBottom:5}}>
-            BATCH <span style={{color:"#333",fontFamily:T.mono,letterSpacing:0,fontSize:10}}>例: 4/4×8 Intro, 7/8×4 Verse, 13/8×1</span>
-          </div>
-          <div style={{display:"flex",gap:5}}>
-            <input value={batchText} onChange={e=>setBatchText(e.target.value)} onKeyDown={e=>e.key==="Enter"&&parseBatch()}
-              placeholder="4/4×8 Intro, 7/8×4 Verse, 13/8×1 Outro" style={{...S.seqInput,flex:1,padding:"7px 10px",fontSize:12}}/>
-            <button onClick={parseBatch} style={{...S.btnSm,color:T.amber,border:`1px solid ${T.amber}40`,fontFamily:T.cond,fontWeight:700,fontSize:12,letterSpacing:1}}>PARSE</button>
-            <button onClick={clearAll} style={{...S.btnSm,color:T.red,border:`1px solid #3a1a1a`,fontFamily:T.cond,fontWeight:700,fontSize:12,letterSpacing:1}}>CLR</button>
-          </div>
-        </div>
-      </div>
-
-      <div style={{textAlign:"center",marginTop:10,fontFamily:T.cond,fontSize:10,color:"#1e1e2a",letterSpacing:3}}>
-        KEEP-BEAT v1.4 · BRASS BAND VARIABLE METER METRONOME
+      <div style=${{display:'flex',gap:5,flexWrap:'wrap',alignItems:'center'}}>
+        ${svMsg?html`<span style=${{fontFamily:C.cnd,fontSize:11,color:C.grn}}>${svMsg}</span>`:''}
+        <button onClick=${()=>setShTun(v=>!v)} style=${p({},shTun?{background:'#1a1a2e',color:C.pur,border:`1px solid ${C.pur}`}:{color:C.pur,border:`1px solid ${C.bdr}`})}
+          >🎵 TUNER${tunOn?html`<span style=${{color:C.grn,animation:'blink 1s infinite'}}> ●</span>`:''}</button>
+        <button onClick=${()=>setShLib(v=>!v)} style=${p({},shLib?{background:'#1a2a35',color:C.blu,border:`1px solid ${C.blu}`}:{color:C.blu,border:`1px solid ${C.bdr}`})}
+          >☰ LIBRARY${lib.length?` (${lib.length})`:''}</button>
+        <button onClick=${()=>setLoop(l=>!l)} style=${p({},loop?{background:C.amb,color:'#000',border:`1px solid ${C.amb}`}:{background:'transparent',color:C.mut})}>⟳ ${loop?'LOOP ON':'LOOP OFF'}</button>
       </div>
     </div>
-  );
+
+    <!-- TUNER -->
+    ${shTun?html`<div style=${{background:C.pan,border:`1px solid ${C.pur}50`,borderRadius:8,padding:14,marginBottom:10}}>
+      <div style=${{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:10,flexWrap:'wrap',gap:8}}>
+        <span style=${{fontFamily:C.cnd,fontSize:11,color:C.pur,letterSpacing:3,fontWeight:700}}>🎵 CHROMATIC TUNER</span>
+        <div style=${{display:'flex',gap:5,alignItems:'center',flexWrap:'wrap'}}>
+          <span style=${{fontFamily:C.cnd,fontSize:10,color:C.mut}}>A4:</span>
+          ${[440,441,442,443,444].map(v=>html`<button key=${v} onClick=${()=>setTunA4(v)} style=${p({fontSize:11,padding:'4px 8px',fontFamily:C.fnt},tunA4===v?{background:C.pur,color:'#fff',border:`1px solid ${C.pur}`}:{color:C.mut})}>${v}</button>`)}
+          <button onClick=${()=>tunOn?stopTun():startTun()} style=${p({padding:'5px 12px',fontFamily:C.cnd,fontWeight:700,fontSize:11,letterSpacing:1},tunOn?{color:C.grn,border:`1px solid ${C.grn}`}:{color:C.mut})}>
+            ${tunOn?'● MIC ON':'○ MIC OFF'}
+          </button>
+        </div>
+      </div>
+      ${tunEr?html`<div style=${{color:C.red,fontFamily:C.cnd,fontSize:11,marginBottom:8}}>${tunEr}</div>`:''}
+      <div style=${{display:'flex',gap:14,alignItems:'center',flexWrap:'wrap'}}>
+        <div style=${{minWidth:80,textAlign:'center'}}>
+          <div style=${{fontFamily:C.fnt,fontSize:52,fontWeight:900,lineHeight:1,color:tunNt?C.pur:C.mut,textShadow:tunNt?`0 0 20px ${C.pur}50`:'none',transition:'color .1s'}}>${tunNt?tunNt.name:'—'}</div>
+          <div style=${{fontFamily:C.fnt,fontSize:18,color:tunNt?C.mut:'#333',marginTop:-4}}>${tunNt?tunNt.oct:''}</div>
+        </div>
+        <div style=${{flex:1,minWidth:180}}>
+          <svg viewBox=${`0 0 ${mW} ${mH}`} style=${{width:'100%',display:'block',borderRadius:4,marginBottom:5,overflow:'visible'}}>
+            <defs>
+              <linearGradient id="mg" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor="#4a1010"/><stop offset="20%" stopColor="#4a3510"/>
+                <stop offset="38%" stopColor="#153520"/><stop offset="50%" stopColor="#0d4a28"/>
+                <stop offset="62%" stopColor="#153520"/><stop offset="80%" stopColor="#4a3510"/>
+                <stop offset="100%" stopColor="#4a1010"/>
+              </linearGradient>
+            </defs>
+            <rect width=${mW} height=${mH-8} fill="url(#mg)" rx="3"/>
+            ${[-50,-25,-10,0,10,25,50].map(c=>html`<g key=${c}>
+              <line x1=${tx(c)} y1=${mH-13} x2=${tx(c)} y2=${mH-8} stroke="#666" strokeWidth=${c===0?2:1}/>
+              <text x=${tx(c)} y=${mH-1} fill="#555" fontSize="7.5" textAnchor="middle" fontFamily="monospace">${c>0?`+${c}`:c}</text>
+            </g>`)}
+            ${tunNt?html`
+              <line x1=${nX} y1="2" x2=${nX} y2=${mH-9} stroke=${nCol} strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx=${nX} cy=${mH-7} r="4.5" fill=${nCol}/>
+            `:''}
+          </svg>
+          <div style=${{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <span style=${{fontFamily:C.fnt,fontSize:16,color:tunNt?nCol:C.mut,fontWeight:700}}>${tunNt?(tC>0?`+${tC}`:tC)+' ¢':'─ ¢'}</span>
+            <span style=${{fontFamily:C.mon,fontSize:11,color:C.mut}}>${tunNt?`${tunNt.hz} Hz`:'─'}</span>
+            <span style=${{fontFamily:C.cnd,fontSize:10,color:tunOn?C.grn:C.mut}}>${tunOn?'● LIVE':'○ MUTED'}</span>
+          </div>
+        </div>
+      </div>
+    </div>`:''}
+
+    <!-- LIBRARY -->
+    ${shLib?html`<div style=${{background:C.pan,border:`1px solid ${C.blu}40`,borderRadius:8,padding:14,marginBottom:10}}>
+      <div style=${{fontFamily:C.cnd,fontSize:11,color:C.blu,letterSpacing:3,fontWeight:700,marginBottom:10}}>☰ LIBRARY</div>
+      <div style=${{display:'flex',gap:6,alignItems:'center',marginBottom:10,flexWrap:'wrap'}}>
+        <input value=${svNm} onInput=${e=>setSvNm(e.target.value)} onKeyDown=${e=>e.key==='Enter'&&saveS()}
+          placeholder="曲名 / セクション名"
+          style=${{...SEQ,flex:1,minWidth:140,padding:'7px 10px',fontSize:13,border:`1px solid ${C.blu}40`}}/>
+        <button onClick=${saveS} style=${{background:C.blu,color:'#000',border:'none',borderRadius:4,padding:'7px 16px',fontFamily:C.cnd,fontWeight:700,fontSize:13,letterSpacing:1,cursor:'pointer'}}>💾 SAVE</button>
+      </div>
+      ${ldLib?html`<div style=${{color:C.mut,fontFamily:C.cnd,fontSize:12,textAlign:'center',padding:12}}>読み込み中…</div>`
+        :lib.length===0?html`<div style=${{color:C.mut,fontFamily:C.cnd,fontSize:12,textAlign:'center',padding:12,border:`1px dashed ${C.bdr}`,borderRadius:6}}>保存データなし</div>`
+        :html`<div style=${{maxHeight:200,overflowY:'auto',marginBottom:10}}>
+          ${lib.map(e=>html`<div key=${e.name} className="librow" style=${{display:'flex',alignItems:'center',gap:8,padding:'6px 10px',marginBottom:3,background:curF===e.name?'#162030':'#0f0f16',border:`1px solid ${curF===e.name?C.blu+'60':C.bdr}`,borderRadius:5}}>
+            <div style=${{width:5,height:5,borderRadius:'50%',flexShrink:0,background:curF===e.name?C.blu:'#222'}}/>
+            <div style=${{flex:1,minWidth:0}}>
+              <div style=${{fontFamily:C.fnt,fontSize:11,color:curF===e.name?C.blu:C.txt,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>${e.name}</div>
+              <div style=${{fontFamily:C.cnd,fontSize:10,color:C.mut,marginTop:1}}>♩=${e.bpm} · ${e.totalMeasures}小節 · ${fmtDt(e.savedAt)}</div>
+            </div>
+            <button onClick=${()=>loadS(e.name)} style=${p({color:C.blu,border:`1px solid ${C.blu}40`,fontFamily:C.cnd,fontWeight:700,fontSize:11,padding:'4px 10px'})}>LOAD</button>
+            <button onClick=${()=>delS(e.name)} style=${p({color:C.red,border:'1px solid #3a1a1a',padding:'3px 8px',fontSize:13})}>🗑</button>
+          </div>`)}
+        </div>`}
+      <div style=${{borderTop:`1px solid ${C.bdr}`,paddingTop:10}}>
+        <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:7}}>EXPORT / IMPORT</div>
+        <div style=${{display:'flex',gap:5,flexWrap:'wrap'}}>
+          <button onClick=${expCur} style=${p({color:C.cyn,border:`1px solid ${C.cyn}40`,fontFamily:C.cnd,fontWeight:700,fontSize:11,padding:'6px 10px'})}>📤 現在のシーケンス書き出し</button>
+          <button onClick=${expLib} style=${p({color:C.cyn,border:`1px solid ${C.cyn}40`,fontFamily:C.cnd,fontWeight:700,fontSize:11,padding:'6px 10px'})}>📚 ライブラリ全体を書き出し</button>
+          <button onClick=${()=>impR.current&&impR.current.click()} style=${p({color:C.amb,border:`1px solid ${C.amb}40`,fontFamily:C.cnd,fontWeight:700,fontSize:11,padding:'6px 10px'})}>📂 JSONを読み込む</button>
+          <input ref=${impR} type="file" accept=".json" onChange=${impFile} style=${{display:'none'}}/>
+        </div>
+      </div>
+    </div>`:''}
+
+    <!-- MAIN ROW -->
+    <div style=${{display:'flex',gap:10,marginBottom:10,flexWrap:'wrap'}}>
+
+      <!-- BEAT DISPLAY -->
+      <div style=${{flex:'1 1 250px',minWidth:240,background:C.pan,border:`1px solid ${inCI?C.cyn:flash?C.amb:C.bdr}`,borderRadius:8,padding:14,boxShadow:inCI?`0 0 20px ${C.cyn}25`:flash?`0 0 20px ${C.ambG}`:'none',transition:'border-color .06s,box-shadow .06s'}}>
+        ${inCI?html`<div style=${{fontFamily:C.fnt,fontSize:9,color:C.cyn,letterSpacing:4,marginBottom:5,animation:'pulse .5s ease-in-out infinite alternate'}}>◆ PRE-COUNT</div>`:''}
+        <div style=${{fontFamily:C.fnt,fontWeight:900,lineHeight:1,marginBottom:8,display:'flex',alignItems:'baseline',gap:4}}>
+          <span style=${{fontSize:56,color:sCol,textShadow:play?`0 0 20px ${sCol}40`:'none',transition:'color .15s'}}>${cBlk.n}</span>
+          <span style=${{fontSize:24,color:C.mut,paddingBottom:3}}>/</span>
+          <span style=${{fontSize:36,color:sCol,opacity:.9}}>${cBlk.d}</span>
+          ${cBlk.tempoMode&&cBlk.tempoMode!=='fixed'?html`<span style=${{fontSize:12,color:C.pur,marginLeft:4,fontFamily:C.cnd,fontStyle:'italic'}}>${cTM.sym||cTM.label}</span>`:''}
+        </div>
+        ${cBlk.label||cBlk.groups?html`<div style=${{display:'flex',gap:8,marginBottom:8,alignItems:'center',flexWrap:'wrap'}}>
+          ${cBlk.label?html`<span style=${{fontFamily:C.cnd,fontSize:11,color:C.amb,letterSpacing:2}}>${cBlk.label.toUpperCase()}</span>`:''}
+          ${cBlk.groups?html`<span style=${{fontFamily:C.mon,fontSize:10,color:C.mut}}>[${cBlk.groups}]</span>`:''}
+        </div>`:''}
+        <div style=${{display:'flex',flexWrap:'wrap',gap:5,marginBottom:12}}>
+          ${Array.from({length:cBlk.n},(_,i)=>{
+            const lv=acc[i],isA=aBeat===i&&play,sz=lv===2?26:lv===1?20:16;
+            return html`<div key=${i} style=${{width:sz,height:sz,borderRadius:'50%',flexShrink:0,
+              background:isA?(lv===2?dCol:lv===1?dCol+'cc':'#aaaacc'):(lv===2?C.ambD:'#191923'),
+              border:`1.5px solid ${isA?dCol:lv===2?'#3a2610':'#202030'}`,
+              boxShadow:isA&&lv===2?`0 0 10px ${dCol},0 0 20px ${dCol}40`:'none',
+              transition:'background .04s,box-shadow .04s'}}/>`;
+          })}
+        </div>
+        <div style=${{display:'flex',alignItems:'baseline',gap:6,marginBottom:4}}>
+          <span style=${{fontFamily:C.fnt,fontSize:20,fontWeight:700,color:inCI?C.cyn:play?C.amb:C.mut}}>
+            ${inCI?'——':play?String(gMeas).padStart(2,'0'):'——'}
+          </span>
+          <span style=${{fontFamily:C.cnd,fontSize:11,color:C.mut}}>/ ${totM} MEASURES</span>
+        </div>
+        ${play&&!inCI?html`<div style=${{fontFamily:C.cnd,fontSize:10,color:C.mut}}>
+          BEAT ${dBeat+1}/${cBlk.n}  REP ${dRep+1}/${cBlk.reps}
+          ${lBpm&&lBpm!==effBpm?html`<span style=${{marginLeft:8,color:C.pur}}>♩=${lBpm}</span>`:''}
+        </div>`:''}
+        ${inCI?html`<div style=${{fontFamily:C.cnd,fontSize:10,color:C.cyn}}>BEAT ${ciBt+1}/${cBlk.n}</div>`:''}
+      </div>
+
+      <!-- TRANSPORT -->
+      <div style=${{flex:'1 1 230px',minWidth:210,background:C.pan,border:`1px solid ${C.bdr}`,borderRadius:8,padding:14,display:'flex',flexDirection:'column',gap:10}}>
+
+        <!-- SOUND TYPE -->
+        <div>
+          <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>SOUND TYPE</div>
+          <div style=${{display:'flex',gap:4,flexWrap:'wrap'}}>
+            ${Object.entries(SOUNDS).map(([id,s])=>html`<button key=${id} onClick=${()=>setSnd(id)}
+              style=${p({fontFamily:C.fnt,fontSize:9,letterSpacing:1,padding:'5px 7px'},snd===id?{background:C.amb,color:'#000',border:`1px solid ${C.amb}`}:{color:C.mut})}>${s.label}</button>`)}
+          </div>
+        </div>
+
+        <!-- VOLUME -->
+        <div>
+          <div style=${{display:'flex',justifyContent:'space-between',marginBottom:4}}>
+            <span style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3}}>VOLUME</span>
+            <span style=${{fontFamily:C.fnt,fontSize:13,color:vol>100?C.red:C.amb,fontWeight:700}}>
+              ${vol}%${vol>100?html`<span style=${{fontSize:9,color:C.red,marginLeft:4}}>BOOST</span>`:''}
+            </span>
+          </div>
+          <input type="range" min="0" max="300" value=${vol} onInput=${e=>setVol(+e.target.value)}
+            style=${{width:'100%',accentColor:vol>100?C.red:C.amb,height:22,marginBottom:4}}/>
+          <div style=${{display:'flex',gap:3,flexWrap:'wrap'}}>
+            ${[50,75,100,150,200,250,300].map(v=>html`<button key=${v} onClick=${()=>setVol(v)}
+              style=${p({padding:'3px 5px',fontSize:10,minHeight:26},
+                vol===v?(v>100?{background:C.red,color:'#000',border:`1px solid ${C.red}`}:{background:C.amb,color:'#000',border:`1px solid ${C.amb}`})
+                      :(v>100?{color:'#cc4444',border:'1px solid #3a1818'}:{color:C.mut}))}>${v}%</button>`)}
+          </div>
+        </div>
+
+        <!-- SUBDIVISION -->
+        <div>
+          <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>SUBDIVISION</div>
+          <div style=${{display:'flex',gap:4,flexWrap:'wrap'}}>
+            ${[[0,'OFF'],[2,'♪÷2 8分'],[3,'♪÷3 3連'],[4,'♪÷4 16分']].map(([v,lb])=>html`<button key=${v} onClick=${()=>setSub(v)}
+              style=${p({fontFamily:C.cnd,fontWeight:700,fontSize:10,padding:'5px 8px',letterSpacing:1},sub===v?{background:C.grn,color:'#000',border:`1px solid ${C.grn}`}:{color:C.mut})}>${lb}</button>`)}
+          </div>
+        </div>
+
+        <!-- COUNT-IN -->
+        <button onClick=${()=>setCI(c=>!c)} style=${p({fontFamily:C.cnd,fontWeight:700,fontSize:11,letterSpacing:2,padding:'7px',width:'100%'},ci?{background:C.cyn+'22',color:C.cyn,border:`1px solid ${C.cyn}`}:{background:'transparent',color:C.mut})}>
+          ${ci?'◆ 予備拍 ON (1小節)':'◇ 予備拍 OFF'}
+        </button>
+
+        <!-- BPM -->
+        <div>
+          <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:4}}>BPM (♩ 基準)</div>
+          <div style=${{display:'flex',alignItems:'center',gap:5}}>
+            <button onClick=${()=>setBpm(b=>Math.max(20,b-1))} style=${p({minWidth:36,fontSize:16,padding:'4px'})}>−</button>
+            <input type="number" value=${bpm} min="20" max="300"
+              onInput=${e=>setBpm(Math.min(300,Math.max(20,+e.target.value||60)))}
+              style=${{flex:1,background:'#0a0a0e',border:`1px solid ${C.bdr}`,color:C.amb,borderRadius:4,padding:'5px 0',fontFamily:C.fnt,fontSize:20,fontWeight:700,textAlign:'center'}}/>
+            <button onClick=${()=>setBpm(b=>Math.min(300,b+1))} style=${p({minWidth:36,fontSize:16,padding:'4px'})}>+</button>
+          </div>
+          <input type="range" min="20" max="300" value=${bpm} onInput=${e=>setBpm(+e.target.value)} style=${{width:'100%',marginTop:5,accentColor:C.amb,height:20}}/>
+        </div>
+
+        <button onClick=${tapTempo} style=${p({fontFamily:C.cnd,fontWeight:700,fontSize:13,letterSpacing:3,padding:10,borderRadius:5},tapF?{background:C.amb,color:'#000',border:`1px solid ${C.amb}`}:{})}>
+          TAP TEMPO
+        </button>
+
+        <!-- TEMPO % -->
+        <div>
+          <div style=${{display:'flex',justifyContent:'space-between',marginBottom:3}}>
+            <span style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3}}>TEMPO %</span>
+            <span style=${{fontFamily:C.fnt,fontSize:11,color:C.amb}}>=${effBpm} ♩/min</span>
+          </div>
+          <div style=${{display:'flex',gap:3,flexWrap:'wrap',marginBottom:4}}>
+            ${[50,60,70,75,80,90,100].map(v=>html`<button key=${v} onClick=${()=>setPct(v)}
+              style=${p({padding:'3px 5px',fontSize:10,minHeight:28},pct===v?{background:C.amb,color:'#000',border:`1px solid ${C.amb}`}:{color:C.mut})}>${v}%</button>`)}
+          </div>
+          <div style=${{display:'flex',gap:5,alignItems:'center'}}>
+            <input type="range" min="25" max="200" value=${pct} onInput=${e=>setPct(+e.target.value)} style=${{flex:1,accentColor:C.amb,height:18}}/>
+            <input type="number" value=${pct} min="25" max="200" onInput=${e=>setPct(Math.min(200,Math.max(25,+e.target.value||100)))}
+              style=${{...NUM,width:48,fontSize:12}}/>
+            <span style=${{fontFamily:C.cnd,fontSize:10,color:C.mut}}>%</span>
+          </div>
+        </div>
+
+        <button onClick=${()=>play?stopPlay():startPlay()} style=${{background:play?C.red:C.amb,color:'#000',border:'none',borderRadius:6,padding:'14px 0',fontFamily:C.fnt,fontWeight:900,fontSize:14,letterSpacing:4,cursor:'pointer',boxShadow:play?`0 0 20px #e8404060`:`0 0 16px ${C.ambG}`,minHeight:50}}>
+          ${play?'■ STOP':'▶ PLAY'}
+        </button>
+      </div>
+    </div>
+
+    <!-- SEQUENCE EDITOR -->
+    <div style=${{background:C.pan,border:`1px solid ${C.bdr}`,borderRadius:8,padding:14}}>
+      <div style=${{fontFamily:C.cnd,fontSize:10,color:C.mut,letterSpacing:3,fontWeight:600,marginBottom:8}}>
+        SEQUENCE <span style=${{color:'#333'}}>(${seq.length} BLOCKS · ${totM} MEASURES)</span>
+      </div>
+      <div style=${{maxHeight:280,overflowY:'auto',marginBottom:10}}>
+        ${seq.map((blk,i)=>{
+          const isA=play&&!inCI&&dBlk===i;
+          const tm=TMODES.find(m=>m.id===blk.tempoMode)||TMODES[0];
+          return html`<div key=${blk.id} style=${{display:'flex',alignItems:'center',gap:4,padding:'5px 7px',marginBottom:4,
+            background:isA?'#151f12':'#0f0f14',border:`1px solid ${isA?C.grn:C.bdr}`,
+            borderRadius:5,overflowX:'auto',flexWrap:'nowrap'}}>
+            <div style=${{width:5,height:5,borderRadius:'50%',flexShrink:0,background:isA?C.grn:'#1e1e28'}}/>
+            <span style=${{fontFamily:C.fnt,fontSize:9,color:'#333',width:12,flexShrink:0,textAlign:'center'}}>${i+1}</span>
+            <input type="number" value=${blk.n} min="1" max="32" onInput=${e=>upBlk(blk.id,'n',Math.max(1,+e.target.value||4))} style=${{...NUM,width:34}}/>
+            <span style=${{color:C.mut,fontSize:13,flexShrink:0}}>/</span>
+            <select value=${blk.d} onChange=${e=>upBlk(blk.id,'d',+e.target.value)} style=${{...NUM,width:36,cursor:'pointer',paddingLeft:3,flexShrink:0}}>
+              ${[2,4,8,16,32].map(v=>html`<option key=${v} value=${v}>${v}</option>`)}
+            </select>
+            <span style=${{color:C.mut,fontSize:12,flexShrink:0}}>×</span>
+            <input type="number" value=${blk.reps} min="1" max="999" onInput=${e=>upBlk(blk.id,'reps',Math.max(1,+e.target.value||1))} style=${{...NUM,width:42}}/>
+            <input value=${blk.groups} onInput=${e=>upBlk(blk.id,'groups',e.target.value)} placeholder="groups"
+              style=${{...SEQ,width:76,color:C.mut,fontSize:11,flexShrink:0}}/>
+            <input value=${blk.label} onInput=${e=>upBlk(blk.id,'label',e.target.value)} placeholder="label"
+              style=${{...SEQ,width:70,flexShrink:0}}/>
+            <select value=${blk.tempoMode||'fixed'} onChange=${e=>upBlk(blk.id,'tempoMode',e.target.value)}
+              style=${{...SEQ,width:72,color:blk.tempoMode&&blk.tempoMode!=='fixed'?C.pur:C.mut,fontSize:11,cursor:'pointer',flexShrink:0}}>
+              ${TMODES.map(m=>html`<option key=${m.id} value=${m.id}>${m.label}</option>`)}
+            </select>
+            ${blk.tempoMode&&blk.tempoMode!=='fixed'&&blk.tempoMode!=='rubato'?html`
+              <span style=${{color:C.pur,fontSize:11,flexShrink:0}}>→</span>
+              <input value=${blk.bpmEnd} onInput=${e=>upBlk(blk.id,'bpmEnd',e.target.value)} placeholder="BPM"
+                style=${{...SEQ,width:46,color:C.pur,fontSize:11,flexShrink:0}}/>
+              <select value=${blk.tempoShape||'exp'} onChange=${e=>upBlk(blk.id,'tempoShape',e.target.value)}
+                style=${{...SEQ,width:42,color:'#888',fontSize:10,cursor:'pointer',flexShrink:0}}>
+                <option value="exp">exp</option><option value="linear">lin</option>
+              </select>
+            `:''}
+            <button onClick=${()=>mvBlk(blk.id,-1)} disabled=${i===0} style=${p(ICO,{opacity:i===0?.2:1,padding:'3px 5px',minWidth:22})}>▲</button>
+            <button onClick=${()=>mvBlk(blk.id,1)} disabled=${i===seq.length-1} style=${p(ICO,{opacity:i===seq.length-1?.2:1,padding:'3px 5px',minWidth:22})}>▼</button>
+            <button onClick=${()=>dupBlk(blk.id)} style=${p(ICO,{padding:'3px 5px',minWidth:22})}>⧉</button>
+            <button onClick=${()=>rmBlk(blk.id)} style=${p(ICO,{color:C.red,padding:'3px 5px',minWidth:22})}>✕</button>
+          </div>`;
+        })}
+      </div>
+
+      <!-- Tempo legend -->
+      <div style=${{marginBottom:10,padding:'6px 10px',background:'#0d0d12',borderRadius:5,border:`1px solid ${C.bdr}`}}>
+        <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>TEMPO CHANGE SYMBOLS</div>
+        <div style=${{display:'flex',flexWrap:'wrap',gap:'2px 10px'}}>
+          ${TMODES.filter(m=>m.id!=='fixed').map(m=>html`<span key=${m.id} style=${{fontFamily:C.cnd,fontSize:10,color:C.mut}}>
+            <span style=${{color:C.pur,fontStyle:'italic'}}>${m.label}</span> ${m.desc}
+          </span>`)}
+        </div>
+      </div>
+
+      <!-- Quick presets -->
+      <div style=${{marginBottom:10}}>
+        <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>QUICK ADD</div>
+        <div style=${{display:'flex',flexWrap:'wrap',gap:4}}>
+          ${PRESETS.map(pr=>html`<button key=${pr.label} onClick=${()=>setSeq(s=>[...s,mkBlk(pr.n,pr.d,1,'',pr.g)])}
+            style=${{background:C.pan2,border:`1px solid ${C.bdr}`,color:C.amb,borderRadius:4,padding:'5px 9px',fontFamily:C.fnt,fontSize:11,letterSpacing:1,minHeight:30,cursor:'pointer'}}>${pr.label}</button>`)}
+        </div>
+      </div>
+
+      <!-- Custom add -->
+      <div style=${{marginBottom:10}}>
+        <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>CUSTOM ADD</div>
+        <div style=${{display:'flex',alignItems:'center',gap:4,flexWrap:'wrap'}}>
+          <input value=${addN} onInput=${e=>setAddN(e.target.value)} placeholder="N" style=${{...NUM,width:36}}/>
+          <span style=${{color:C.mut}}>/</span>
+          <select value=${addD} onChange=${e=>setAddD(e.target.value)} style=${{...NUM,width:38,cursor:'pointer'}}>
+            ${[2,4,8,16,32].map(v=>html`<option key=${v} value=${v}>${v}</option>`)}
+          </select>
+          <span style=${{color:C.mut}}>×</span>
+          <input value=${addR} onInput=${e=>setAddR(e.target.value)} placeholder="回" style=${{...NUM,width:42}}/>
+          <input value=${addGr} onInput=${e=>setAddGr(e.target.value)} placeholder="groups" style=${{...SEQ,width:100,color:C.mut,fontSize:11}}/>
+          <input value=${addLb} onInput=${e=>setAddLb(e.target.value)} placeholder="ラベル" style=${{...SEQ,flex:1,minWidth:70}}/>
+          <button onClick=${addBlk} style=${{background:C.amb,color:'#000',border:'none',borderRadius:4,padding:'6px 14px',fontFamily:C.cnd,fontWeight:700,fontSize:13,letterSpacing:1,cursor:'pointer',minHeight:32}}>+ ADD</button>
+        </div>
+      </div>
+
+      <!-- Batch -->
+      <div>
+        <div style=${{fontFamily:C.cnd,fontSize:9,color:C.mut,letterSpacing:3,marginBottom:5}}>BATCH</div>
+        <div style=${{display:'flex',gap:5}}>
+          <input value=${batch} onInput=${e=>setBatch(e.target.value)} onKeyDown=${e=>e.key==='Enter'&&parseBatch()}
+            placeholder="4/4×8 Intro, 7/8×4 Verse, 13/8×1"
+            style=${{...SEQ,flex:1,padding:'7px 10px',fontSize:12}}/>
+          <button onClick=${parseBatch} style=${p({color:C.amb,border:`1px solid ${C.amb}40`,fontFamily:C.cnd,fontWeight:700,fontSize:12,letterSpacing:1})}>PARSE</button>
+          <button onClick=${clearAll} style=${p({color:C.red,border:'1px solid #3a1a1a',fontFamily:C.cnd,fontWeight:700,fontSize:12,letterSpacing:1})}>CLR</button>
+        </div>
+      </div>
+    </div>
+
+    <div style=${{textAlign:'center',marginTop:10,fontFamily:C.cnd,fontSize:10,color:'#1e1e2a',letterSpacing:3}}>
+      KEEP-BEAT v2.2 · BRASS BAND VARIABLE METER METRONOME
+    </div>
+  </div>`;
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<KeepBeat />);
+// show app
+document.getElementById('loading').style.display = 'none';
+document.getElementById('root').style.display = '';
+render(html`<${KeepBeat}/>`, document.getElementById('root'));
 </script>
 </body>
 </html>
